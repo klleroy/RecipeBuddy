@@ -93,18 +93,23 @@ $(document).ready(function(){
     modal = document.getElementById('myModal');
 })
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+/*// Get the button that opens the modal
+var btn = document.getElementById("build-list");
 
-/*// When the user clicks the button, open the modal 
+// When the user clicks the button, open the modal 
 btn.onclick = function () {
 	modal.style.display = "block";
 }*/
 
+function closeModal(){
+    modal.style.display = "none";
+    $("td").remove();
+}
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
 	if (event.target == modal) {
-		modal.style.display = "none";
+		closeModal();
 	}
 }
 
@@ -112,10 +117,7 @@ $("#myClose").on("click",function(){
     modal.style.display = "none";
 })
 
-$("#buildList").on("click", function () {
-    console.log(shoplist);
-    modal.style.display = "block";
-    debugger;
+$("#build-list").on("click", function () {
      for (var i= 0; i<shoplist.length;i++){
     //shoplist.forEach(function (elem) {
         //make table row
@@ -153,5 +155,5 @@ $("#buildList").on("click", function () {
         $("#list").append(table_row);
     };
     
-    /*modal.style.display = "block";*/
+    modal.style.display = "block";
 });
