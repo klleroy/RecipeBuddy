@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Recipe Buddy</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -10,7 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
         integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 </head>
 
 <body>
@@ -156,7 +155,7 @@
                         </div>
                     </div>
                     <br>
-                    <a href="#" class="btn btn-primary">Go Shopping</a>
+                    <a href="#" id="build-list" class="btn btn-primary">Go Shopping</a>
                     <br>
                     <h5 class="card-title">Saved Recipes for Shopping <i class="fas fa-eraser"></i></h5>
                     <ul class="list">
@@ -172,6 +171,30 @@
 
         </div>
     </div>
+    <div>
+        <!--the List will be added in a modal-->
+        <div id="modal-holder">
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <!--Add the body of the shopping list-->
+                    <table id="list" class="table">
+                        <thead>
+                            <tr>
+                                <th class="tableHead" scope="col"></th>
+                                <th class="tableHead" scope="col">Ingredient</th>
+                                <th class="tableHead" scope="col">Amount</th>
+                                <th class="tableHead" scope="col">Location</th>
+                                <th class="tableHead" scope="col">Recipe</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <button id="myClose">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -183,7 +206,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="assets\javascript\list-save.js"></script>
 </body>
 
 </html>
