@@ -1,12 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Recipe Buddy</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 </head>
+
 <body>
-    Hello World
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Recipe Buddy</h1>
+            <p class="lead">The one stop shop on the web for making shopping lists FAST.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+
+            <div id="recipes" class="col-md-3">
+                <div class="card">
+                    <h4 class="card-title">Recipes</h4>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12">
+                                <form class="card card-sm">
+                                    <div class="card-body row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <i class="fas fa-search h6 text-body"></i>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control form-control-sm form-control-borderless"
+                                                type="search" placeholder="Search for recipe">
+                                        </div>
+                                        <div class="col-auto">
+                                            <button class="btn btn-sm btn-primary" type="submit">Search</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <a href="#" class="btn btn-primary">Find Random Recipe</a>
+                    <br>
+                    <h5 class="card-title">Saved Recipes <i class="fas fa-eraser"></i></h5>
+                    <ul class="list">
+                        <li>Breakfeast Burrito</li>
+                        <li>Burger</li>
+                        <li>Milk Steak</li>
+                        <li>Garlic Chicken</li>
+                        <li>Guacamole</li>
+                        <li>Chicken Parm</li>
+                        <li>Steak Tartare</li>
+                        <li>Pad Thai</li>
+                        <li>Tartar Sauce</li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="slick" class="col-md-6">
+                <div class="bd-example">
+                    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <i class="far fa-heart"></i>
+                                <img src="assets/images/guacamole1.jpg" class="d-block w-100 h-100" alt="food1">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>First slide label</h5>
+                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <i class="far fa-heart"></i>
+                                <img src="assets/images/guacamole2.jpg" class="d-block w-100 h-100" alt="food2">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Second slide label</h5>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <i class="far fa-heart"></i>
+                                <img src="assets/images/guacamole3.jpg" class="d-block w-100 h-100" alt="food3">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Third slide label</h5>
+                                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <br><br>
+                <div class="row">
+                    <div id="slick" class="col-md-12">
+                        <div class="card">
+                            <h4 class="card-title">Current Recipe Selected <i class="fas fa-clipboard-list"></i></h4>
+                            <h5 class="card-title">Current Recipe</h5>
+                            <ul class="list">
+                                <li>Milk</li>
+                                <li>Steak</li>
+                                <li>Bread</li>
+                                <li>Crumbs</li>
+                                <li>Eggs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="shoppingList" class="col-md-3">
+                <div class="card">
+                    <h4 class="card-title">Shopping List</h4>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12">
+                                <form class="card card-sm">
+                                    <div class="card-body row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <i class="fas fa-search h6 text-body"></i>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control form-control-sm form-control-borderless"
+                                                type="search" placeholder="Search shopping list">
+                                        </div>
+                                        <div class="col-auto">
+                                            <button class="btn btn-sm btn-primary" type="submit">Search</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <a href="#" class="btn btn-primary">Go Shopping</a>
+                    <br>
+                    <h5 class="card-title">Saved Recipes for Shopping <i class="fas fa-eraser"></i></h5>
+                    <ul class="list">
+                        <li>Breakfeast Burrito</li>
+                        <li>Burger</li>
+                        <li>Milk Steak</li>
+                        <li>Chicken Parm</li>
+                        <li>Guacamole</li>
+                        <li>Pad Thai</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

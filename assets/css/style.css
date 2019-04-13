@@ -1,0 +1,73 @@
+/* SOURCED FROM */
+/* https://bootsnipp.com/snippets/35V6b */
+body {
+    text-align: center;
+    background-color: bisque;
+}
+
+.form-control-borderless {
+    border: none;
+    font-size: .5em;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+/* SOURCED FROM */
+/* http://jsfiddle.net/chriscoyier/KVjFQ/42/ */
+
+  h4.card-title {
+    color: #cd0000;
+    font-size: 2em;
+    letter-spacing: -2px;
+    text-align: center;
+    padding: .5em 1em .5em 1em;
+}
+h5.card-title {
+    color: #cd0000;
+    font-size: 1.25em;
+    letter-spacing: -2px;
+    text-align: left;
+    padding: 0em .5em 0em .5em;
+  }
+  .list {
+    color: #555;
+    font-size: 12px;
+    padding: 0 !important;
+    font-family: courier, monospace;
+    border: 1px solid #dedede;
+    position: relative;
+    box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);   
+  }
+  .list li {
+    list-style: none;
+    text-align: left;
+    border-bottom: 1px dotted #ccc;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 10px 5px 10px 50px;
+    text-transform: capitalize;
+  }
+  .list li:hover {
+    background-color: #eee;
+    -webkit-transition: 0.2s;
+    -moz-transition:    0.2s;
+    -ms-transition:     0.2s;
+    -o-transition:      0.2s;
+  }
+  .list li:last-child {
+    border-bottom: 0;
+  }
+  .list:before {
+    content: "";
+    border-left: 1px solid #ffaa9f;
+    border-right: 1px solid #ffaa9f;
+    width: 2px;
+    position: absolute;
+    height: 100%;
+    left: 25px;
+  }
