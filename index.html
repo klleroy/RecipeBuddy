@@ -1,13 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="assets\css\style.css">
 </head>
+
 <body>
-    Hello World
-    Good Day
+    <div>
+        Hello World
+        Good Day
+        <button id="buildList" type="build" class="btn btn-primary">
+            BuildList
+        </button>
+    </div>
+
+    <div>
+        <!--the List will be added in a modal-->
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <!--Add the body of the shopping list-->
+                <table id="list" class="table">
+                    <thead>
+                        <tr>
+                            <th class="tableHead" scope="col"></th>
+                            <th class="tableHead" scope="col">Ingredient</th>
+                            <th class="tableHead" scope="col">Amount</th>
+                            <th class="tableHead" scope="col">Location</th>
+                            <th class="tableHead" scope="col">Recipe</th>
+                        </tr>
+                    </thead>
+                </table>
+                <button id="myClose">Close</button>
+            </div>
+        </div>
+        
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+    <script src="assets\javascript\list-save.js"></script>
+    </div>
+    </div>
 </body>
+
 </html>
