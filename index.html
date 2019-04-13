@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
         integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 </head>
 
 <body>
@@ -25,7 +24,7 @@
     <div class="container">
         <div class="row">
 
-            <div id="recipes" class="col-md-3">
+            <div id="recipe-list" class="col-md-3">
                 <div class="card">
                     <h4 class="card-title">Recipes</h4>
                     <div class="container">
@@ -49,9 +48,24 @@
                         </div>
                     </div>
                     <br>
-                    <a href="#" class="btn btn-primary">Find Random Recipe</a>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <a href="#" id="random-recipe" class="btn btn-primary">Find Random Recipe</a>
+                            </div>
+                        </div>
+                    </div>
                     <br>
-                    <h5 class="card-title">Saved Recipes <i class="fas fa-eraser"></i></h5>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <h5 class="card-title">Saved Recipes</h5>
+                            </div>
+                            <div class="col-lg-2">
+                                <h5 class="card-title"><i class="fas fa-eraser"></i></h5>
+                            </div>
+                        </div>
+                    </div>
                     <ul class="list">
                         <li>Breakfeast Burrito</li>
                         <li>Burger</li>
@@ -67,7 +81,7 @@
                 </div>
             </div>
 
-            <div id="slick" class="col-md-6">
+            <div id="carousel" class="col-md-6">
                 <div class="bd-example">
                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
@@ -115,9 +129,16 @@
                 </div>
                 <br><br>
                 <div class="row">
-                    <div id="slick" class="col-md-12">
+                    <div id="current-recipe" class="col-md-12">
                         <div class="card">
-                            <h4 class="card-title">Current Recipe Selected <i class="fas fa-clipboard-list"></i></h4>
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <h4 class="card-title">Current Recipe Selected</h4>
+                                </div>
+                                <div class="col-lg-2">
+                                    <h5 class="card-title"><i class="fas fa-clipboard-list"></i></h5>
+                                </div>
+                            </div>
                             <h5 class="card-title">Current Recipe</h5>
                             <ul class="list">
                                 <li>Milk</li>
@@ -132,7 +153,7 @@
 
             </div>
 
-            <div id="shoppingList" class="col-md-3">
+            <div id="shopping-list" class="col-md-3">
                 <div class="card">
                     <h4 class="card-title">Shopping List</h4>
                     <div class="container">
@@ -156,9 +177,24 @@
                         </div>
                     </div>
                     <br>
-                    <a href="#" class="btn btn-primary">Go Shopping</a>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">`
+                                <a href="#" id="build-list" class="btn btn-primary">Go Shopping</a>
+                            </div>
+                        </div>
+                    </div>
                     <br>
-                    <h5 class="card-title">Saved Recipes for Shopping <i class="fas fa-eraser"></i></h5>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <h5 class="card-title">Saved Recipes for Shopping</h5>
+                            </div>
+                            <div class="col-lg-2">
+                                <h5 class="card-title"><i class="fas fa-eraser"></i></h5>
+                            </div>
+                        </div>
+                    </div>
                     <ul class="list">
                         <li>Breakfeast Burrito</li>
                         <li>Burger</li>
@@ -173,17 +209,16 @@
         </div>
     </div>
 
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
 </body>
 
 </html>
