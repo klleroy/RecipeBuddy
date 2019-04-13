@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Recipe Buddy</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -208,6 +207,30 @@
 
         </div>
     </div>
+    <div>
+        <!--the List will be added in a modal-->
+        <div id="modal-holder">
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <!--Add the body of the shopping list-->
+                    <table id="list" class="table">
+                        <thead>
+                            <tr>
+                                <th class="tableHead" scope="col"></th>
+                                <th class="tableHead" scope="col">Ingredient</th>
+                                <th class="tableHead" scope="col">Amount</th>
+                                <th class="tableHead" scope="col">Location</th>
+                                <th class="tableHead" scope="col">Recipe</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <button id="myClose">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -219,6 +242,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
+    <script src="assets\javascript\list-save.js"></script>
 </body>
 
 </html>
