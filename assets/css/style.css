@@ -20,6 +20,9 @@
     overflow: scroll;
 }
 
+.fas, .far {
+  color: #cd0000;
+}
   
   /* Modal Content */
   .modal-content {
