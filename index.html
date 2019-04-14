@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Recipe Buddy</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -24,7 +23,7 @@
     <div class="container">
         <div class="row">
 
-            <div id="recipes" class="col-md-3">
+            <div id="recipe-list" class="col-md-3">
                 <div class="card">
                     <h4 class="card-title">Recipes</h4>
                     <div class="container">
@@ -48,9 +47,24 @@
                         </div>
                     </div>
                     <br>
-                    <a href="#" class="btn btn-primary">Find Random Recipe</a>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <a href="#" id="random-recipe" class="btn btn-primary">Find Random Recipe</a>
+                            </div>
+                        </div>
+                    </div>
                     <br>
-                    <h5 class="card-title">Saved Recipes <i class="fas fa-eraser"></i></h5>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <h5 class="card-title">Saved Recipes</h5>
+                            </div>
+                            <div class="col-lg-2">
+                                <h5 class="card-title"><i class="fas fa-eraser"></i></h5>
+                            </div>
+                        </div>
+                    </div>
                     <ul class="list">
                         <li>Breakfeast Burrito</li>
                         <li>Burger</li>
@@ -66,7 +80,7 @@
                 </div>
             </div>
 
-            <div id="slick" class="col-md-6">
+            <div id="carousel" class="col-md-6">
                 <div class="bd-example">
                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
@@ -114,9 +128,16 @@
                 </div>
                 <br><br>
                 <div class="row">
-                    <div id="slick" class="col-md-12">
+                    <div id="current-recipe" class="col-md-12">
                         <div class="card">
-                            <h4 class="card-title">Current Recipe Selected <i class="fas fa-clipboard-list"></i></h4>
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <h4 class="card-title">Current Recipe Selected</h4>
+                                </div>
+                                <div class="col-lg-2">
+                                    <h5 class="card-title"><i class="fas fa-clipboard-list"></i></h5>
+                                </div>
+                            </div>
                             <h5 class="card-title">Current Recipe</h5>
                             <ul class="list">
                                 <li>Milk</li>
@@ -131,7 +152,7 @@
 
             </div>
 
-            <div id="shoppingList" class="col-md-3">
+            <div id="shopping-list" class="col-md-3">
                 <div class="card">
                     <h4 class="card-title">Shopping List</h4>
                     <div class="container">
@@ -155,9 +176,24 @@
                         </div>
                     </div>
                     <br>
-                    <a href="#" class="btn btn-primary">Go Shopping</a>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">`
+                                <a href="#" id="build-list" class="btn btn-primary">Go Shopping</a>
+                            </div>
+                        </div>
+                    </div>
                     <br>
-                    <h5 class="card-title">Saved Recipes for Shopping <i class="fas fa-eraser"></i></h5>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <h5 class="card-title">Saved Recipes for Shopping</h5>
+                            </div>
+                            <div class="col-lg-2">
+                                <h5 class="card-title"><i class="fas fa-eraser"></i></h5>
+                            </div>
+                        </div>
+                    </div>
                     <ul class="list">
                         <li>Breakfeast Burrito</li>
                         <li>Burger</li>
@@ -171,8 +207,42 @@
 
         </div>
     </div>
+    <div>
+        <!--the List will be added in a modal-->
+        <div id="modal-holder">
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <!--Add the body of the shopping list-->
+                    <div class="card mb-3">
 
-
+                            <h4 class="card-title">Shopping List</h4>
+                        <!-- <div> 
+                            <h4 class="card-header">
+                                Grocery List
+                            </h4>
+                        </div> -->
+                        <!--Add the body of the train schedule-->
+                        <div class="card-body">
+                            <table id="list" class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="table-head" scope="col"></th>
+                                        <th class="table-head" scope="col">Ingredient</th>
+                                        <th class="table-head" scope="col">Amount</th>
+                                        <th class="table-head" scope="col">Location</th>
+                                        <th class="table-head " scope="col">Recipe</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <button id="myClose">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -182,11 +252,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+<<<<<<< HEAD
         <!-- jQuery Link -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Javascript Link -->
     <script src="assets/javascript/search.js"></script>    
+=======
+
+    <script src="assets\javascript\list-save.js"></script>
+>>>>>>> origin/master
 </body>
 
 </html>

@@ -1,3 +1,49 @@
+/*Center text on the Jumbotron and the table rows*/
+.jumbotron, tr{
+    text-align: center;
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+#modal-holder{
+    overflow: scroll;
+}
+
+  
+  /* Modal Content */
+  .modal-content {
+    /*background-color: #fefefe;*/
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
 /* SOURCED FROM */
 /* https://bootsnipp.com/snippets/35V6b */
 body {
@@ -19,14 +65,14 @@ body {
 /* SOURCED FROM */
 /* http://jsfiddle.net/chriscoyier/KVjFQ/42/ */
 
-  h4.card-title {
+  h4.card-title, .card-header {
     color: #cd0000;
     font-size: 2em;
     letter-spacing: -2px;
     text-align: center;
     padding: .5em 1em .5em 1em;
 }
-h5.card-title {
+h5.card-title, .table-head {
     color: #cd0000;
     font-size: 1.25em;
     letter-spacing: -2px;
@@ -42,7 +88,7 @@ h5.card-title {
     position: relative;
     box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);   
   }
-  .list li {
+  .list li, td {
     list-style: none;
     text-align: left;
     border-bottom: 1px dotted #ccc;
@@ -71,3 +117,33 @@ h5.card-title {
     height: 100%;
     left: 25px;
   }
+
+/*.card-head {
+    color: #cd0000;
+    font-size: 2em;
+    letter-spacing: -2px;
+    text-align: center;
+    padding: 0em .5em 0em .5em;
+    font-family: courier, monospace;
+  }*/
+  td {
+      font-family: courier, monospace;
+  }
+
+  h4.card-header{
+    font-family: courier, monospace;
+    font-weight: 500;
+    line-height: 1.2
+  }
+  .checker:before {
+    content: "";
+    border-left: 1px solid #ffaa9f;
+    border-right: 1px solid #ffaa9f;
+    width: 2px;
+    position: absolute;
+    height: 7%;
+    left: 45px;
+  }
+.checker{
+    margin-left: 30px;
+}
