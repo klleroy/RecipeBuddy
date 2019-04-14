@@ -8,7 +8,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
-        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">    <link href = "https://cdnjs.com/libraries/mathjs">    
 </head>
 
 <body>
@@ -16,7 +16,7 @@
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">Recipe Buddy</h1>
-            <p class="lead">[insert witty slogan here]</p>
+            <p class="lead">The one stop shop on the web for making shopping lists FAST.</p>
         </div>
     </div>
 
@@ -47,9 +47,11 @@
                         </div>
                     </div>
                     <br>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <a href="#" id="random-recipe" class="btn btn-primary">Find Random Recipe</a>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <a href="#" id="random-recipe" class="btn btn-primary">Find Random Recipe</a>
+                            </div>
                         </div>
                     </div>
                     <br>
@@ -58,9 +60,8 @@
                             <div class="col-lg-9">
                                 <h5 class="card-title">Saved Recipes</h5>
                             </div>
-                            <div class="col-lg-1">
-                                <button id="recipe-eraser-btn" class="btn card-title"><i
-                                        class="fas fa-eraser"></i></button>
+                            <div class="col-lg-2">
+                                <h5 class="card-title"><i class="fas fa-eraser"></i></h5>
                             </div>
                         </div>
                     </div>
@@ -129,21 +130,13 @@
                         <div class="card">
                             <div class="row">
                                 <div class="col-lg-9">
-                                    <br>
-                                    <h3 class="card-title">Current Recipe:[TODO: INSERT RECIPE NAME HERE]</h3>
-                                    <br>
+                                    <h4 class="card-title">Current Recipe Selected</h4>
                                 </div>
-                                <div class="col-lg-1">
-                                    <br>
-                                    <button id="clipboard-btn" class="btn card-title"><i
-                                            class="fas fa-clipboard-list"></i></button>
-                                </div>
-                                <div class="col-lg-1">
-                                    <br>
-                                    <button id="shopping-cart-btn" class="btn card-title"><i
-                                            class="fas fa-shopping-cart"></i></button>
+                                <div class="col-lg-2">
+                                    <h5 class="card-title"><i class="fas fa-clipboard-list"></i></h5>
                                 </div>
                             </div>
+                            <h5 class="card-title">Current Recipe</h5>
                             <ul class="list">
                                 <li>Milk</li>
                                 <li>Steak</li>
@@ -181,9 +174,11 @@
                         </div>
                     </div>
                     <br>
-                    <div class="row">
-                        <div class="col-lg-12">`
-                            <a href="#" id="build-list" class="btn btn-primary">Go Shopping</a>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">`
+                                <a href="#" id="build-list" class="btn btn-primary">Go Shopping</a>
+                            </div>
                         </div>
                     </div>
                     <br>
@@ -192,9 +187,8 @@
                             <div class="col-lg-9">
                                 <h5 class="card-title">Saved Recipes for Shopping</h5>
                             </div>
-                            <div class="col-lg-1">
-                                <button id="shopping-eraser-btn" class="btn card-title"><i
-                                        class="fas fa-eraser"></i></button>
+                            <div class="col-lg-2">
+                                <h5 class="card-title"><i class="fas fa-eraser"></i></h5>
                             </div>
                         </div>
                     </div>
@@ -261,10 +255,9 @@
         integrity="sha256-PbRroAUpIyTnrldGv4fXrZs7xPspHcNJOzImonLhuMA=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.9.0/math.min.js"
         integrity="sha256-3ZZFOeOBb7ZCAyNja0sIfokH2Uzjp5oCX1F24jDI7mg=" crossorigin="anonymous"></script>
-    <script>src = "https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.9.0/math.min.map"</script>
-    <!-- jQuery Link -->
+      <!-- jQuery Link -->  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.9.0/math.min.map"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
     <script src="assets\javascript\list-save.js"></script>
     <script src="assets\javascript\search.js"></script>
     <script src="assets\javascript\swipe.js"></script>
