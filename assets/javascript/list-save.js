@@ -104,6 +104,7 @@ btn.onclick = function () {
 function closeModal(){
     modal.style.display = "none";
     $("td").remove();
+    $("tr").remove();
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -125,7 +126,7 @@ $("#build-list").on("click", function () {
         
         //make table data checkbox
         let td = $("<td>");
-        td.append( $("<input type='checkbox' name='chk' value=''>"));
+        td.append( $("<input type='checkbox' name='chk' class='checker' value=''>"));
         table_row.append(td);
         
         //make table data ingredient
