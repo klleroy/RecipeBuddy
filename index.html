@@ -215,23 +215,34 @@
                 <!-- Modal content -->
                 <div class="modal-content">
                     <!--Add the body of the shopping list-->
-                    <table id="list" class="table">
-                        <thead>
-                            <tr>
-                                <th class="tableHead" scope="col"></th>
-                                <th class="tableHead" scope="col">Ingredient</th>
-                                <th class="tableHead" scope="col">Amount</th>
-                                <th class="tableHead" scope="col">Location</th>
-                                <th class="tableHead" scope="col">Recipe</th>
-                            </tr>
-                        </thead>
-                    </table>
-                    <button id="myClose">Close</button>
+                    <div class="card mb-3">
+
+                            <h4 class="card-title">Shopping List</h4>
+                        <!-- <div> 
+                            <h4 class="card-header">
+                                Grocery List
+                            </h4>
+                        </div> -->
+                        <!--Add the body of the train schedule-->
+                        <div class="card-body">
+                            <table id="list" class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="table-head" scope="col"></th>
+                                        <th class="table-head" scope="col">Ingredient</th>
+                                        <th class="table-head" scope="col">Amount</th>
+                                        <th class="table-head" scope="col">Location</th>
+                                        <th class="table-head " scope="col">Recipe</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <button id="myClose">Close</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
