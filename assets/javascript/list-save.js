@@ -6,7 +6,7 @@ var item1 = {
     location: "",
     recipe:"Roasted Tomato Salsa",
 }
-shoplist.push(item1);
+insert(item1);
 var item1 = {
     ingredient: "rice",
     amount: "2",
@@ -14,7 +14,7 @@ var item1 = {
     location: "",
     recipe:"Roasted Tomato Salsa",
 }
-shoplist.push(item1);
+insert(item1);
 var item1 = {
     ingredient: "salsa",
     amount: "2",
@@ -22,7 +22,7 @@ var item1 = {
     location: "",
     recipe:"Roasted Tomato Salsa",
 }
-shoplist.push(item1);
+insert(item1);
 var item1 = {
     ingredient: "chicken broth",
     amount: "1.5",
@@ -30,7 +30,7 @@ var item1 = {
     location: "",
     recipe:"Roasted Tomato Salsa",
 }
-shoplist.push(item1);
+insert(item1);
 var item1 = {
     ingredient: "salt",
     amount: "1",
@@ -38,7 +38,7 @@ var item1 = {
     location: "",
     recipe:"Roasted Tomato Salsa",
 }
-shoplist.push(item1);
+insert(item1);
 var item1 = {
     ingredient: "cilantro",
     amount: ".5",
@@ -46,7 +46,7 @@ var item1 = {
     location: "",
     recipe:"Roasted Tomato Salsa",
 }
-shoplist.push(item1);
+insert(item1);
 var item1 = {
     ingredient: "cilantro",
     amount: ".25",
@@ -54,7 +54,7 @@ var item1 = {
     location: "",
     recipe:"Roasted Tomato Salsa",
 }
-shoplist.push(item1);
+insert(item1);
 var item1 = {
     ingredient: "water",
     amount: ".25",
@@ -62,7 +62,7 @@ var item1 = {
     location: "",
     recipe:"Spanish Rice",
 }
-shoplist.push(item1);
+insert(item1);
 var item1 = {
     ingredient: "garlic",
     amount: "3",
@@ -70,7 +70,7 @@ var item1 = {
     location: "",
     recipe:"Spanish Rice",
 }
-shoplist.push(item1);
+insert(item1);
 var item1 = {
     ingredient: "jalapeno",
     amount: "2",
@@ -78,7 +78,7 @@ var item1 = {
     location: "",
     recipe:"Spanish Rice",
 }
-shoplist.push(item1);
+insert(item1);
 var item1 = {
     ingredient: "plum tomato",
     amount: "1.5",
@@ -86,7 +86,65 @@ var item1 = {
     location: "",
     recipe:"Spanish Rice",
 }
-shoplist.push(item1);
+insert(item1);
+
+function clean_unit(unit){
+    switch(unit){
+        case "tbsp":
+            return "tablespoon";
+            break;
+        case "tsp":
+            return "teaspoon";
+            break;
+        case "cup":
+            return "cp";
+            break;
+        case "pint":
+            return "pt";
+            break;
+        case "quart":
+            return "qt";
+            break;
+        case "gallon":
+            return "gal";
+            break;
+        default:
+            return unit;
+    };
+}
+
+function get_proper_unit(item){
+    let unit = "";
+    unit = item.unit;
+    return unit;
+}
+
+function insert(item){
+    //get the position of the ingredient in the array
+    let posi = -1;
+    for(let i = 0; i < shoplist.length; i++){
+        if(shoplist[i].ingredient === item.ingredient){
+            posi = i;
+            i = shoplist.length;
+        }
+    }
+
+    item.math_unit = math.unit(item.amount, clean_unit(item.unit));
+    //let posi = shoplist.indexOf(item);
+    if(posi == -1){
+        //new ingrdient
+        //add a math.unit element to my object
+        
+        //add the object to my array
+        shoplist.push(item);
+    }else{
+        let new_math_unit = math.unit(item.amount, clean_unit(item.unit));
+        item.math_unit = math.add(item.math_unit, new_math_unit);
+        item.unit = get_proper_unit(item.math_unit);
+        item.amount = math.toNumber(item.math_unit, item.unit);
+    }
+}
+
 var modal = "";
 // Get the modal
 $(document).ready(function(){
