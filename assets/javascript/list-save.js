@@ -87,6 +87,28 @@ var item1 = {
     recipe:"Spanish Rice",
 }
 shoplist.push(item1);
+
+function clean_unit(unit){
+    return unit;
+}
+
+function insert(item){
+    //get the position of the ingredient in the array
+    let posi = shoplist.indexOf(item.ingredient);
+    if(posi == -1){
+        //new ingrdient
+        //add a math.unit element to my object
+        item.math_unit = math.unit(item.amount, clean_unit(item.unit));
+        //add the object to my array
+        shoplist.push(item);
+    }else{
+        let new_math_unit = math.unit(item.amount, clean_unit(item.unit));
+        item.math_unit = math.add(item.math_unit, new_math_unit);
+        item.unit = get_proper_unit(item.math_unit);
+        item.amount = math.toNumber(item.math_unit, item.unit);
+    }
+}
+
 var modal = "";
 // Get the modal
 $(document).ready(function(){
