@@ -66,7 +66,7 @@ insert(item1);
 var item1 = {
     ingredient: "garlic",
     amount: "3",
-    unit: "cloves",
+    unit: "",
     location: "",
     recipe:"Spanish Rice",
 }
@@ -129,7 +129,7 @@ function insert(item){
         }
     }
 
-    item.math_unit = math.unit(item.amount, clean_unit(item.unit));
+    /*item.math_unit = math.unit(item.amount, clean_unit(item.unit));
     //let posi = shoplist.indexOf(item);
     if(posi == -1){
         //new ingrdient
@@ -138,11 +138,11 @@ function insert(item){
         //add the object to my array
         shoplist.push(item);
     }else{
-        let new_math_unit = math.unit(item.amount, clean_unit(item.unit));
+        /*let new_math_unit = math.unit(item.amount, clean_unit(item.unit));
         item.math_unit = math.add(item.math_unit, new_math_unit);
         item.unit = get_proper_unit(item.math_unit);
-        item.amount = math.toNumber(item.math_unit, item.unit);
-    }
+        item.amount = math.Number(item.math_unit, item.unit);
+}*/
 }
 
 var modal = "";
