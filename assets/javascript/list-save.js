@@ -246,13 +246,26 @@ function insert(item) {
         //add a math.unit element to my object
 
         //add the object to my array
-        shoplist.push(item);
+        //shoplist.push(item);
+        if (shoplist.length != 0) {
+            for (var i = 0; i < shoplist.length; i++) {
+                if (item.location < shoplist[i].location) {
+                    shoplist.splice(i, 0, item);
+                    break;
+                }
+            }
+            if(i===shoplist.length){
+                shoplist[i] = item;
+            }
+        } else {
+            shoplist[0] = item;
+        }
     } else {
         if (item.unit.trim() != "") {
-            if(item.clean_unit != ""){
+            if (item.clean_unit != "") {
                 shoplist[posi].math_unit = math.add(item.math_unit, shoplist[posi].math_unit);
-                shoplist[posi].amount = math.number(shoplist[posi].math_unit, clean_unit(shoplist[posi].unit));            
-            }else{
+                shoplist[posi].amount = math.number(shoplist[posi].math_unit, clean_unit(shoplist[posi].unit));
+            } else {
                 shoplist[posi].amount = parseInt(shoplist[posi].amount) + parseInt(item.amount);
             }
         }
@@ -324,7 +337,9 @@ $("#myClose").on("click", function () {
 })
 
 $("#build-list").on("click", function () {
-    for (var i = 0; i < shoplist.length; i++) {
+    let i = 0;
+
+    for (i = 0; i < shoplist.length; i++) {
         //shoplist.forEach(function (elem) {
         //make table row
         let table_row = $("<tr>");
@@ -347,11 +362,11 @@ $("#build-list").on("click", function () {
 
 
 
-        /*        //make table data location
-                td = $("<td>");
-                td.text(shoplist[i].location);
-                table_row.append(td);
-        */
+        //make table data location
+        td = $("<td>");
+        td.text(shoplist[i].location);
+        table_row.append(td);
+
 
         //make table data recipe
         td = $("<td>");
