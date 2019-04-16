@@ -1,4 +1,4 @@
-$(document).on("click", ".btn-primary", function (event) {
+$(document).on("click", ".btn-danger", function (event) {
     event.preventDefault();
     debugger;
     displayRecipes();
@@ -12,7 +12,7 @@ var favorite;
 function displayRecipes() {
  
     var offset = Math.floor((Math.random() * 100) + 1);
-    var recipe = $('.form-control-borderless').val();
+    var recipe = $('#recipe-value').val();
     console.log(recipe);
 
     var queryUrl = "https://api.edamam.com/search?q=" + recipe + "&app_id=45939a6b&app_key=e37d7f29462257f1fa878816ec76418f&limit=10&offset=" + offset;
