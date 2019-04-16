@@ -1,95 +1,98 @@
-var shoplist = [];
-var item1 = {
-    ingredient: "olive oil",
-    amount: "2",
-    unit: "tbsp",
-    location: "",
-    recipe:"Roasted Tomato Salsa",
-}
-insert(item1);
-var item1 = {
-    ingredient: "rice",
-    amount: "2",
-    unit: "cups",
-    location: "",
-    recipe:"Roasted Tomato Salsa",
-}
-insert(item1);
-var item1 = {
-    ingredient: "salsa",
-    amount: "2",
-    unit: "cups",
-    location: "",
-    recipe:"Roasted Tomato Salsa",
-}
-insert(item1);
-var item1 = {
-    ingredient: "chicken broth",
-    amount: "1.5",
-    unit: "cups",
-    location: "",
-    recipe:"Roasted Tomato Salsa",
-}
-insert(item1);
-var item1 = {
-    ingredient: "salt",
-    amount: "1",
-    unit: "teaspoon",
-    location: "",
-    recipe:"Roasted Tomato Salsa",
-}
-insert(item1);
-var item1 = {
-    ingredient: "cilantro",
-    amount: ".5",
-    unit: "cup",
-    location: "",
-    recipe:"Roasted Tomato Salsa",
-}
-insert(item1);
-var item1 = {
-    ingredient: "cilantro",
-    amount: ".25",
-    unit: "cup",
-    location: "",
-    recipe:"Roasted Tomato Salsa",
-}
-insert(item1);
-var item1 = {
-    ingredient: "water",
-    amount: ".25",
-    unit: "cup",
-    location: "",
-    recipe:"Spanish Rice",
-}
-insert(item1);
-var item1 = {
-    ingredient: "garlic",
-    amount: "3",
-    unit: "cloves",
-    location: "",
-    recipe:"Spanish Rice",
-}
-insert(item1);
-var item1 = {
-    ingredient: "jalapeno",
-    amount: "2",
-    unit: "",
-    location: "",
-    recipe:"Spanish Rice",
-}
-insert(item1);
-var item1 = {
-    ingredient: "plum tomato",
-    amount: "1.5",
-    unit: "pounds",
-    location: "",
-    recipe:"Spanish Rice",
-}
-insert(item1);
+let shoplist = [];
+let units = ['cup', 'cp', 'pint', 'pt', 'quart', 'qt', 'gallon', 'gal', 'teaspoon', 'tablespoon', 'cups', 'cps', 'pints', 'pts', 'quarts', 'qts', 'gallons', 'gals', 'teaspoons', 'tablespoons', "ounce", "ounces"]
 
-function clean_unit(unit){
-    switch(unit){
+parse_item("1 1/2 cup olive oil");
+parse_item("Cilantro Chile Sauce");
+parse_item("2 large cloves garlic");
+parse_item("1/2 cup extra virgin olive oil");
+parse_item("2 tablespoons lemon juice, freshly squeezed");
+parse_item("1 small bunch cilantro");
+parse_item("1 green (serrano) chile, seeds removed");
+parse_item("2 pinches ground cumin");
+parse_item("a couple big pinches of salt");
+parse_item("6 large organic eggs");
+parse_item("1 tablespoon olive oil");
+parse_item("1 small yellow onion, chopped");
+parse_item("3 small potatoes, very very thinly sliced");
+parse_item("1/2 cup yellow zucchini or cauliflower,1/2-inch pieces");
+parse_item("1/4 cup goat cheese, crumbled");
+parse_item("1/4 cup pumpkin seeds, toasted");
+parse_item("couple pinches of salt");
+parse_item("2 fresh jalapeno chiles");
+parse_item("3 garlic cloves, unpeeled");
+parse_item("1/2 cup finely chopped white onion");
+parse_item("15 ounce can diced tomatoes in juice)");
+parse_item("1/3 cup (loosely packed) roughly chopped cilantro");
+parse_item("1 teaspoon fresh lime juice");
+parse_item("Salt");
+
+
+function parse_item(line) {
+    let item = {
+        ingredient: "",
+        amount: "",
+        unit: "",
+        location: "",
+        recipe: "",
+    }
+    let numerator = "";
+    let denomerator = "";
+    let whole = "0";
+    let amount = "";
+    let left = "";
+    let fraction = "";
+    let endnum = 0;
+    
+    //check for a number
+    if (parseInt(line.substr(0, line.indexOf(" "))) > 0) {
+        //I have a number!
+        if(line.indexOf("/") > -1){
+            endnum = line.indexOf(" ",line.indexOf("/"));
+        }else{   
+            endnum = line.indexOf(" ");
+        }
+        amount = line.substr(0, endnum);
+
+        //check for a fraction
+        if (amount.indexOf("/") > -1) {
+            left = amount.substr(0, amount.indexOf("/"));
+            // look for a mixed number
+            if (left.indexOf(" ") > -1) {
+                whole = left.substr(0, left.indexOf(" "));
+                numerator = left.substr(left.indexOf(",") + 1, left.length - 1)
+            }
+            else {
+                //just a fraction no whole number
+                numerator = left;
+            }
+            denomerator = amount.substr(amount.indexOf("/") + 1, amount.length - 1);
+            fraction = math.fraction(numerator, denomerator);
+            item.amount = parseInt(whole) + math.number(fraction);
+
+        } else {
+            item.amount = line.substr(0, line.indexOf(" "));
+            //perhaps we have a fraction or mxed number
+        }
+        line = line.substr(endnum + 1, line.length - 1)
+    }
+    //check for a unit
+    if (units.indexOf(line.substr(0, line.indexOf(" "))) > -1) {
+        //I have a unit!
+        item.unit = line.substr(0, line.indexOf(" "));
+        line = line.substr(line.indexOf(" ") + 1, line.length - 1)
+    }
+
+    //look for instructions to remove
+    if (line.indexOf(",") > -1) {
+        item.ingredient = line.substr(0, line.indexOf(","));
+    } else {
+        item.ingredient = line;
+    }
+    insert(item);
+}
+
+function clean_unit(unit) {
+    switch (unit) {
         case "tbsp":
             return "tablespoon";
             break;
@@ -108,46 +111,53 @@ function clean_unit(unit){
         case "gallon":
             return "gal";
             break;
+        case "ounce":
+            return "floz";
+            break;
         default:
             return unit;
     };
 }
 
-function get_proper_unit(item){
+function get_proper_unit(item) {
     let unit = "";
     unit = item.unit;
     return unit;
 }
 
-function insert(item){
+function insert(item) {
     //get the position of the ingredient in the array
     let posi = -1;
-    for(let i = 0; i < shoplist.length; i++){
-        if(shoplist[i].ingredient === item.ingredient){
+    for (let i = 0; i < shoplist.length; i++) {
+        if (shoplist[i].ingredient === item.ingredient) {
             posi = i;
             i = shoplist.length;
         }
     }
 
-    item.math_unit = math.unit(item.amount, clean_unit(item.unit));
+    if (item.unit.trim() != "") {
+        item.math_unit = math.unit(item.amount, clean_unit(item.unit));
+    }
     //let posi = shoplist.indexOf(item);
-    if(posi == -1){
+    if (posi == -1) {
         //new ingrdient
         //add a math.unit element to my object
-        
+
         //add the object to my array
         shoplist.push(item);
-    }else{
-        let new_math_unit = math.unit(item.amount, clean_unit(item.unit));
-        item.math_unit = math.add(item.math_unit, new_math_unit);
-        item.unit = get_proper_unit(item.math_unit);
-        item.amount = math.toNumber(item.math_unit, item.unit);
+    } else {
+        if (item.unit.trim() != "") {
+            let new_math_unit = math.unit(item.amount, clean_unit(item.unit));
+            item.math_unit = math.add(item.math_unit, new_math_unit);
+            item.unit = get_proper_unit(item.math_unit);
+            item.amount = math.number(item.math_unit, item.unit);
+        }
     }
 }
 
 var modal = "";
 // Get the modal
-$(document).ready(function(){
+$(document).ready(function () {
     modal = document.getElementById('myModal');
 })
 
@@ -159,50 +169,85 @@ btn.onclick = function () {
 	modal.style.display = "block";
 }*/
 
-function closeModal(){
+function closeModal() {
     modal.style.display = "none";
     $("td").remove();
     $("tr").remove();
 }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-	if (event.target == modal) {
-		closeModal();
-	}
+
+//code taken from 
+// http://jonisalonen.com/2012/converting-decimal-numbers-to-ratios/
+function decimal_to_fraction(x) {
+    var tolerance = 1.0E-6;
+    var h1=1; var h2=0;
+    var k1=0; var k2=1;
+    var b = x;
+    do {
+        var a = Math.floor(b);
+        var aux = h1; h1 = a*h1+h2; h2 = aux;
+        aux = k1; k1 = a*k1+k2; k2 = aux;
+        b = 1/(b-a);
+    } while (Math.abs(x-h1/k1) > x*tolerance);
+    
+    return h1+"/"+k1;
 }
 
-$("#myClose").on("click",function(){
+
+function format_amount(amount){
+    
+    let return_val = "";
+    let whole = math.floor(amount);
+    let remainder = amount % 1;
+    if(whole != 0){
+    return_val = whole.toString(); 
+    }
+    if(remainder != 0){
+        return_val = return_val.trim() + " " + decimal_to_fraction(remainder);
+    }
+    return return_val.trim();
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        closeModal();
+    }
+}
+
+$("#myClose").on("click", function () {
     modal.style.display = "none";
 })
 
 $("#build-list").on("click", function () {
-     for (var i= 0; i<shoplist.length;i++){
-    //shoplist.forEach(function (elem) {
+    for (var i = 0; i < shoplist.length; i++) {
+        //shoplist.forEach(function (elem) {
         //make table row
         let table_row = $("<tr>");
-        
+
         //make table data checkbox
         let td = $("<td>");
-        td.append( $("<input type='checkbox' name='chk' class='checker' value=''>"));
+        td.append($("<input type='checkbox' name='chk' class='checker' value=''>"));
         table_row.append(td);
-        
+
+        //make table data amount
+        td = $("<td>");
+        td.text(format_amount(shoplist[i].amount) + " " + shoplist[i].unit);
+        table_row.append(td);
+
+
         //make table data ingredient
         td = $("<td>");
         td.text(shoplist[i].ingredient);
         table_row.append(td);
 
 
-        //make table data amount
-        td = $("<td>");
-        td.text(shoplist[i].amount + " " + shoplist[i].unit);
-        table_row.append(td);
 
-        //make table data location
+/*        //make table data location
         td = $("<td>");
         td.text(shoplist[i].location);
         table_row.append(td);
-
+*/
 
         //make table data recipe
         td = $("<td>");
@@ -213,6 +258,6 @@ $("#build-list").on("click", function () {
         //append table row to the table
         $("#list").append(table_row);
     };
-    
+
     modal.style.display = "block";
 });

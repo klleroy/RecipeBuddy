@@ -1,10 +1,7 @@
 $(document).on("click", ".btn-primary", function (event) {
     event.preventDefault();
+    debugger;
     displayRecipes();
-  
-
-
-
 });
 
 
@@ -27,7 +24,7 @@ function displayRecipes() {
         method: "GET"
     }).then(function (response) {
 
-
+        debugger;
         // create a for to get the 10 elements from the data. 
         for (var i = 0; i < response.hits.length; i++) {
 
