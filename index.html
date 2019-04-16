@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
         integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link href="https://cdnjs.com/libraries/mathjs">
 </head>
 
 <body>
@@ -27,19 +28,15 @@
                 <div class="card">
                     <h4 class="card-title">Recipes</h4>
                     <div class="container">
-                        <div class="row justify-content-center">
+                        <div class="row">
                             <div class="col-lg-12">
-                                <form class="card card-sm">
-                                    <div class="card-body row no-gutters align-items-center">
+                                <form class="navbar-form" role="search">
+                                    <div class="input-group add-on">
+                                        <input id="recipe-value" name="recipe-value" class="form-control" type="text"
+                                            placeholder="Search for recipe">
                                         <div class="col-auto">
-                                            <i class="fas fa-search h6 text-body"></i>
-                                        </div>
-                                        <div class="col">
-                                            <input class="form-control form-control-sm form-control-borderless"
-                                                type="search" placeholder="Search for recipe">
-                                        </div>
-                                        <div class="col-auto">
-                                            <button class="btn btn-sm btn-primary" type="submit">Search</button>
+                                            <button class="btn btn-danger" type="submit"><i
+                                                    class="fas fa-search text-body"></i></button>
                                         </div>
                                     </div>
                                 </form>
@@ -49,7 +46,7 @@
                     <br>
                     <div class="row">
                         <div class="col-lg-12">
-                            <a href="#" id="random-recipe" class="btn btn-primary">Find Random Recipe</a>
+                            <a href="#" id="random-recipe" class="btn btn-danger">Find Random Recipe</a>
                         </div>
                     </div>
                     <br>
@@ -161,19 +158,15 @@
                 <div class="card">
                     <h4 class="card-title">Shopping List</h4>
                     <div class="container">
-                        <div class="row justify-content-center">
+                        <div class="row">
                             <div class="col-lg-12">
-                                <form class="card card-sm">
-                                    <div class="card-body row no-gutters align-items-center">
+                                <form class="navbar-form" role="search">
+                                    <div class="input-group add-on">
+                                        <input id="shopping-list-value" name="shopping-list-value" class="form-control"
+                                            type="text" placeholder="Search shopping list">
                                         <div class="col-auto">
-                                            <i class="fas fa-search h6 text-body"></i>
-                                        </div>
-                                        <div class="col">
-                                            <input class="form-control form-control-sm form-control-borderless"
-                                                type="search" placeholder="Search shopping list">
-                                        </div>
-                                        <div class="col-auto">
-                                            <button class="btn btn-sm btn-primary" type="submit">Search</button>
+                                            <button class="btn btn-danger" type="submit"><i
+                                                    class="fas fa-search text-body"></i></button>
                                         </div>
                                     </div>
                                 </form>
@@ -183,7 +176,7 @@
                     <br>
                     <div class="row">
                         <div class="col-lg-12">`
-                            <a href="#" id="build-list" class="btn btn-primary">Go Shopping</a>
+                            <a href="#" id="build-list" class="btn btn-danger">Go Shopping</a>
                         </div>
                     </div>
                     <br>
@@ -261,7 +254,7 @@
         integrity="sha256-PbRroAUpIyTnrldGv4fXrZs7xPspHcNJOzImonLhuMA=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.9.0/math.min.js"
         integrity="sha256-3ZZFOeOBb7ZCAyNja0sIfokH2Uzjp5oCX1F24jDI7mg=" crossorigin="anonymous"></script>
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.9.0/math.min.map"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.9.0/math.min.map"></script>
     <!-- jQuery Link -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
