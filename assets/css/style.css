@@ -1,7 +1,15 @@
+/* BODY FORMATTING */
+body {
+  text-align: center;
+  background-color: bisque;
+}
+
 /*Center text on the Jumbotron and the table rows*/
 .jumbotron, tr{
     text-align: center;
+    padding: 1rem 1rem;
 }
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -58,6 +66,33 @@
   transition: all 0.2s ease-out;
 }
 
+.carousel-caption-like {
+  position: absolute;
+  right: 10%;
+  top: 0%;
+  z-index: 15;
+  text-align: right;
+  font-size: 3em;
+}
+
+.carousel-control-next, .carousel-control-prev {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 10%;
+  color: #fff;
+  text-align: center;
+  opacity: .5;
+  transition: opacity .15s ease;
+}
+
 /* carousel fullscreen - vertically centered caption*/
 
 .carousel-fullscreen .carousel-caption {
@@ -102,20 +137,25 @@
 
 /* SOURCED FROM */
 /* https://bootsnipp.com/snippets/35V6b */
-body {
-    text-align: center;
-    background-color: bisque;
-}
 
-.form-control-borderless {
-    border: none;
-    font-size: .5em;
-}
 
-.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
-    border: none;
-    outline: none;
-    box-shadow: none;
+/* BUTTON FORMATTING */
+
+.add-on .input-group-btn > .btn {
+  border-left-width:0;left:-2px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+/* stop the glowing blue shadow */
+.add-on #shopping-list-value.form-control:focus, 
+.add-on #recipe-value.form-control:focus  {
+ box-shadow:none;
+ -webkit-box-shadow:none; 
+ border-color:#cccccc;
+}
+.col-auto {
+  padding-right: 0px;
+  padding-left: 5px;
 }
 
 /* SOURCED FROM */
