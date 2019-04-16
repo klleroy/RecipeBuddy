@@ -1,6 +1,7 @@
 let shoplist = [];
-let units = ['cup', 'cp', 'pint', 'pt', 'quart', 'qt', 'gallon', 'gal', 'teaspoon', 'tablespoon', 'cups', 'cps', 'pints', 'pts', 'quarts', 'qts', 'gallons', 'gals', 'teaspoons', 'tablespoons']
+let units = ['cup', 'cp', 'pint', 'pt', 'quart', 'qt', 'gallon', 'gal', 'teaspoon', 'tablespoon', 'cups', 'cps', 'pints', 'pts', 'quarts', 'qts', 'gallons', 'gals', 'teaspoons', 'tablespoons', "ounce", "ounces"]
 
+parse_item("1 1/2 cup olive oil");
 parse_item("Cilantro Chile Sauce");
 parse_item("2 large cloves garlic");
 parse_item("1/2 cup extra virgin olive oil");
@@ -17,6 +18,14 @@ parse_item("1/2 cup yellow zucchini or cauliflower,1/2-inch pieces");
 parse_item("1/4 cup goat cheese, crumbled");
 parse_item("1/4 cup pumpkin seeds, toasted");
 parse_item("couple pinches of salt");
+parse_item("2 fresh jalapeno chiles");
+parse_item("3 garlic cloves, unpeeled");
+parse_item("1/2 cup finely chopped white onion");
+parse_item("15 ounce can diced tomatoes in juice)");
+parse_item("1/3 cup (loosely packed) roughly chopped cilantro");
+parse_item("1 teaspoon fresh lime juice");
+parse_item("Salt");
+
 
 function parse_item(line) {
     let item = {
@@ -32,11 +41,18 @@ function parse_item(line) {
     let amount = "";
     let left = "";
     let fraction = "";
-
+    let endnum = 0;
+    
     //check for a number
     if (parseInt(line.substr(0, line.indexOf(" "))) > 0) {
         //I have a number!
-        amount = line.substr(0, line.indexOf(" "));
+        if(line.indexOf("/") > -1){
+            endnum = line.indexOf(" ",line.indexOf("/"));
+        }else{   
+            endnum = line.indexOf(" ");
+        }
+        amount = line.substr(0, endnum);
+
         //check for a fraction
         if (amount.indexOf("/") > -1) {
             left = amount.substr(0, amount.indexOf("/"));
@@ -45,19 +61,19 @@ function parse_item(line) {
                 whole = left.substr(0, left.indexOf(" "));
                 numerator = left.substr(left.indexOf(",") + 1, left.length - 1)
             }
-            else{
+            else {
                 //just a fraction no whole number
                 numerator = left;
             }
             denomerator = amount.substr(amount.indexOf("/") + 1, amount.length - 1);
             fraction = math.fraction(numerator, denomerator);
-            item.amount = parseInt(whole) + math.number(fraction);    
+            item.amount = parseInt(whole) + math.number(fraction);
 
         } else {
             item.amount = line.substr(0, line.indexOf(" "));
             //perhaps we have a fraction or mxed number
         }
-        line = line.substr(line.indexOf(" ") + 1, line.length - 1)
+        line = line.substr(endnum + 1, line.length - 1)
     }
     //check for a unit
     if (units.indexOf(line.substr(0, line.indexOf(" "))) > -1) {
@@ -94,6 +110,9 @@ function clean_unit(unit) {
             break;
         case "gallon":
             return "gal";
+            break;
+        case "ounce":
+            return "floz";
             break;
         default:
             return unit;
@@ -156,6 +175,39 @@ function closeModal() {
     $("tr").remove();
 }
 
+
+//code taken from 
+// http://jonisalonen.com/2012/converting-decimal-numbers-to-ratios/
+function decimal_to_fraction(x) {
+    var tolerance = 1.0E-6;
+    var h1=1; var h2=0;
+    var k1=0; var k2=1;
+    var b = x;
+    do {
+        var a = Math.floor(b);
+        var aux = h1; h1 = a*h1+h2; h2 = aux;
+        aux = k1; k1 = a*k1+k2; k2 = aux;
+        b = 1/(b-a);
+    } while (Math.abs(x-h1/k1) > x*tolerance);
+    
+    return h1+"/"+k1;
+}
+
+
+function format_amount(amount){
+    
+    let return_val = "";
+    let whole = math.floor(amount);
+    let remainder = amount % 1;
+    if(whole != 0){
+    return_val = whole.toString(); 
+    }
+    if(remainder != 0){
+        return_val = return_val.trim() + " " + decimal_to_fraction(remainder);
+    }
+    return return_val.trim();
+}
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
@@ -178,22 +230,24 @@ $("#build-list").on("click", function () {
         td.append($("<input type='checkbox' name='chk' class='checker' value=''>"));
         table_row.append(td);
 
+        //make table data amount
+        td = $("<td>");
+        td.text(format_amount(shoplist[i].amount) + " " + shoplist[i].unit);
+        table_row.append(td);
+
+
         //make table data ingredient
         td = $("<td>");
         td.text(shoplist[i].ingredient);
         table_row.append(td);
 
 
-        //make table data amount
-        td = $("<td>");
-        td.text(shoplist[i].amount + " " + shoplist[i].unit);
-        table_row.append(td);
 
-        //make table data location
+/*        //make table data location
         td = $("<td>");
         td.text(shoplist[i].location);
         table_row.append(td);
-
+*/
 
         //make table data recipe
         td = $("<td>");
