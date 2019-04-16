@@ -1,7 +1,15 @@
+/* BODY FORMATTING */
+body {
+  text-align: center;
+  background-color: bisque;
+}
+
 /*Center text on the Jumbotron and the table rows*/
 .jumbotron, tr{
     text-align: center;
+    padding: 1rem 1rem;
 }
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -58,6 +66,33 @@
   transition: all 0.2s ease-out;
 }
 
+.carousel-caption-like {
+  position: absolute;
+  right: 10%;
+  top: 0%;
+  z-index: 15;
+  text-align: right;
+  font-size: 3em;
+}
+
+.carousel-control-next, .carousel-control-prev {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 10%;
+  color: #fff;
+  text-align: center;
+  opacity: .5;
+  transition: opacity .15s ease;
+}
+
 /* carousel fullscreen - vertically centered caption*/
 
 .carousel-fullscreen .carousel-caption {
@@ -102,10 +137,7 @@
 
 /* SOURCED FROM */
 /* https://bootsnipp.com/snippets/35V6b */
-body {
-    text-align: center;
-    background-color: bisque;
-}
+
 
 /* BUTTON FORMATTING */
 
