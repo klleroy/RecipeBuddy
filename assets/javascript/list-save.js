@@ -286,10 +286,14 @@ btn.onclick = function () {
 	modal.style.display = "block";
 }*/
 
-function closeModal() {
-    modal.style.display = "none";
+function clearModal(){
     $("td").remove();
     $("tr").remove();
+}
+
+function closeModal() {
+    clearModal();
+    modal.style.display = "none";
 }
 
 
@@ -338,7 +342,7 @@ $("#myClose").on("click", function () {
 
 $("#build-list").on("click", function () {
     let i = 0;
-
+    clearModal();
     for (i = 0; i < shoplist.length; i++) {
         //shoplist.forEach(function (elem) {
         //make table row

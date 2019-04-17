@@ -1,3 +1,5 @@
+let favs = [];
+let recipes = [];
 $(document).on("click", ".btn-danger", function (event) {
     event.preventDefault();
     debugger;
@@ -25,12 +27,14 @@ function displayRecipes() {
     }).then(function (response) {
 
         debugger;
+        recipes = response.results;
+        
         // create a for to get the 10 elements from the data. 
         for (var i = 0; i < response.hits.length; i++) {
 
             // Showing the image when the button in clicked.
             var showImage = $("<div class='carousel-item'>");
-
+            showImage.attr("data-ID",response.results[i].id);
             showImage.data('title', response.hits[i].recipe.label);
 
             var label = response.hits[i].recipe.label;
