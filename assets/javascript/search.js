@@ -15,8 +15,8 @@ function displayRecipes() {
     var recipe = $('#recipe-value').val();
     console.log(recipe);
 
-    var queryUrl = "https://api.edamam.com/search?q=" + recipe + "&app_id=45939a6b&app_key=e37d7f29462257f1fa878816ec76418f&limit=10&offset=" + offset;
-
+    /*var queryUrl = "https://api.edamam.com/search?q=" + recipe + "&app_id=45939a6b&app_key=e37d7f29462257f1fa878816ec76418f&limit=10&offset=" + offset;*/
+    var queryUrl = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/searchComplex?query=" + recipe + "&fillIngredients=true&instructionsRequired=true&addRecipeInformation=true&limitLicense=true&offset=0&number=10&mashape-key=d20470ce32mshdbfd156afdd96dap16c402jsn7739274350bc";
     // Creating an AJAX call for the specific search button being clicked.
 
     $.ajax({

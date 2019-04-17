@@ -246,7 +246,7 @@ button.card-title {
     font-weight: 500;
     line-height: 1.2
   }
-  .checker:before {
+  /*.checker:before {
     content: "";
     border-left: 1px solid #ffaa9f;
     border-right: 1px solid #ffaa9f;
@@ -254,7 +254,16 @@ button.card-title {
     position: absolute;
     height: 7%;
     left: 45px;
-  }
+  }*/
 .checker{
     margin-left: 30px;
+}
+#line{
+    content: "";
+    border-left: 1px solid #ffaa9f;
+    border-right: 1px solid #ffaa9f;
+    width: 2px;
+    position: absolute;
+    height: 81%;
+    left: 45px;
 }
