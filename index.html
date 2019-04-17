@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
         integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link href="https://cdnjs.com/libraries/mathjs">
 </head>
 
 <body>
@@ -27,19 +28,15 @@
                 <div class="card">
                     <h4 class="card-title">Recipes</h4>
                     <div class="container">
-                        <div class="row justify-content-center">
+                        <div class="row">
                             <div class="col-lg-12">
-                                <form class="card card-sm">
-                                    <div class="card-body row no-gutters align-items-center">
+                                <form class="navbar-form" role="search">
+                                    <div class="input-group add-on">
+                                        <input id="recipe-value" name="recipe-value" class="form-control" type="text"
+                                            placeholder="Search for recipe">
                                         <div class="col-auto">
-                                            <i class="fas fa-search h6 text-body"></i>
-                                        </div>
-                                        <div class="col">
-                                            <input class="form-control form-control-sm form-control-borderless"
-                                                type="search" placeholder="Search for recipe">
-                                        </div>
-                                        <div class="col-auto">
-                                            <button class="btn btn-sm btn-primary" type="submit">Search</button>
+                                            <button id="recipe-submit" class="btn btn-danger" type="submit"><i
+                                                    class="fas fa-search text-body"></i></button>
                                         </div>
                                     </div>
                                 </form>
@@ -49,7 +46,8 @@
                     <br>
                     <div class="row">
                         <div class="col-lg-12">
-                            <a href="#" id="random-recipe" class="btn btn-primary">Find Random Recipe</a>
+                            <!-- TODO: placeholder, to be replaced -->
+                            <a href="#" id="random-recipe" class="btn btn-danger">Find Random Recipe</a>
                         </div>
                     </div>
                     <br>
@@ -59,22 +57,19 @@
                                 <h5 class="card-title">Saved Recipes</h5>
                             </div>
                             <div class="col-lg-1">
-                                <button id="recipe-eraser-btn" class="btn card-title"><i
-                                        class="fas fa-eraser"></i></button>
+                                <button id="recipe-trash-btn" class="btn card-title"><i class="far fa-trash-alt"></i></button>
                             </div>
                         </div>
                     </div>
-                    <ul class="list">
-                        <li>Breakfeast Burrito</li>
-                        <li>Burger</li>
-                        <li>Milk Steak</li>
-                        <li>Garlic Chicken</li>
-                        <li>Guacamole</li>
-                        <li>Chicken Parm</li>
-                        <li>Steak Tartare</li>
-                        <li>Pad Thai</li>
-                        <li>Tartar Sauce</li>
-                        <li></li>
+                    <ul id="saved-recipes" class="list">
+
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Breakfeast Burrito</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Burger</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Milk Steak</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Garlic Chicken</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Guacamole</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Chicken Parm</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Guacamole</li>
                     </ul>
                 </div>
             </div>
@@ -90,14 +85,16 @@
                         <div class="carousel-inner" role="listbox option">
                             <div class="carousel-item active">
                                 <img src="assets/images/guacamole1.jpg" class="d-block img-fluid" alt="food1">
+                                <div class="carousel-caption-like">
+                                    <i class="far fa-heart fav"></i>
+                                </div>
                                 <div class="carousel-caption d-none d-md-block">
-                                    <i class="far fa-heart"></i>
                                     <h5>[NAME OF FOOD]</h5>
                                     <p>[DESCRIPTION OF FOOD]</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <i class="far fa-heart"></i>
+                                <i class="far fa-heart fav"></i>
                                 <img src="assets/images/guacamole2.jpg" class="d-block img-fluid" alt="food2">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>[NAME OF FOOD]</h5>
@@ -105,7 +102,7 @@
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <i class="far fa-heart"></i>
+                                <i class="far fa-heart fav"></i>
                                 <img src="assets/images/guacamole3.jpg" class="d-block img-fluid" alt="food3">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>[NAME OF FOOD]</h5>
@@ -135,16 +132,14 @@
                                 </div>
                                 <div class="col-lg-1">
                                     <br>
-                                    <button id="clipboard-btn" class="btn card-title"><i
-                                            class="fas fa-clipboard-list"></i></button>
+                                    <button id="add-current-recipe-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>
                                 </div>
                                 <div class="col-lg-1">
                                     <br>
-                                    <button id="shopping-cart-btn" class="btn card-title"><i
-                                            class="fas fa-shopping-cart"></i></button>
+                                    <button id="add-to-shopping-list-btn" class="btn card-title"><i class="far fa-trash-alt"></i></button>
                                 </div>
                             </div>
-                            <ul class="list">
+                            <ul id="current-recipe-list" class="list">
                                 <li>Milk</li>
                                 <li>Steak</li>
                                 <li>Bread</li>
@@ -161,19 +156,15 @@
                 <div class="card">
                     <h4 class="card-title">Shopping List</h4>
                     <div class="container">
-                        <div class="row justify-content-center">
+                        <div class="row">
                             <div class="col-lg-12">
-                                <form class="card card-sm">
-                                    <div class="card-body row no-gutters align-items-center">
+                                <form class="navbar-form" role="search">
+                                    <div class="input-group add-on">
+                                        <input id="shopping-list-value" name="shopping-list-value" class="form-control"
+                                            type="text" placeholder="Search shopping list">
                                         <div class="col-auto">
-                                            <i class="fas fa-search h6 text-body"></i>
-                                        </div>
-                                        <div class="col">
-                                            <input class="form-control form-control-sm form-control-borderless"
-                                                type="search" placeholder="Search shopping list">
-                                        </div>
-                                        <div class="col-auto">
-                                            <button class="btn btn-sm btn-primary" type="submit">Search</button>
+                                            <button id="search-shopping-list" class="btn btn-danger" type="submit"><i
+                                                    class="fas fa-search text-body"></i></button>
                                         </div>
                                     </div>
                                 </form>
@@ -183,7 +174,7 @@
                     <br>
                     <div class="row">
                         <div class="col-lg-12">`
-                            <a href="#" id="build-list" class="btn btn-primary">Go Shopping</a>
+                            <a href="#" id="build-list" class="btn btn-danger">Go Shopping</a>
                         </div>
                     </div>
                     <br>
@@ -193,12 +184,11 @@
                                 <h5 class="card-title">Saved Recipes for Shopping</h5>
                             </div>
                             <div class="col-lg-1">
-                                <button id="shopping-eraser-btn" class="btn card-title"><i
-                                        class="fas fa-eraser"></i></button>
+                                <button id="shopping-trash-btn" class="btn card-title"><i class="far fa-trash-alt"></i></button>
                             </div>
                         </div>
                     </div>
-                    <ul class="list">
+                    <ul id="saved-shopping-list-" class="list">
                         <li>Breakfeast Burrito</li>
                         <li>Burger</li>
                         <li>Milk Steak</li>
@@ -233,9 +223,9 @@
                                 <thead>
                                     <tr>
                                         <th class="table-head" scope="col"></th>
-                                        <th class="table-head" scope="col">Ingredient</th>
                                         <th class="table-head" scope="col">Amount</th>
-                                        <th class="table-head" scope="col">Location</th>
+                                        <th class="table-head" scope="col">Ingredient</th>
+                                        <!-- <th class="table-head" scope="col">Location</th>-->
                                         <th class="table-head " scope="col">Recipe</th>
                                     </tr>
                                 </thead>
@@ -261,13 +251,30 @@
         integrity="sha256-PbRroAUpIyTnrldGv4fXrZs7xPspHcNJOzImonLhuMA=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.9.0/math.min.js"
         integrity="sha256-3ZZFOeOBb7ZCAyNja0sIfokH2Uzjp5oCX1F24jDI7mg=" crossorigin="anonymous"></script>
-    <script>src = "https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.9.0/math.min.map"</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.9.0/math.min.map"></script>
     <!-- jQuery Link -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
 
-    <script src="assets\javascript\list-save.js"></script>
-    <script src="assets\javascript\search.js"></script>
-    <script src="assets\javascript\swipe.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyA0qcq1DO0TyZwjmUpFme1gy2XUN5SApiE",
+        authDomain: "recipe-buddy-20e3d.firebaseapp.com",
+        databaseURL: "https://recipe-buddy-20e3d.firebaseio.com",
+        projectId: "recipe-buddy-20e3d",
+        storageBucket: "recipe-buddy-20e3d.appspot.com",
+        messagingSenderId: "330550503875"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <script src="assets/javascript/list-save.js"></script>
+    <script src="assets/javascript/shop-list.js"></script>
+    <script src="assets/javascript/trash-item.js"></script>
+    <script src="assets/javascript/search.js"></script>
+    <script src="assets/javascript/swipe.js"></script>
+    <script src="assets/javascript/favs.js"></script>
 </body>
 
 </html>

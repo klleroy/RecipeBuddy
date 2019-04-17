@@ -1,5 +1,6 @@
 $(document).on("click", ".btn-danger", function (event) {
     event.preventDefault();
+    debugger;
     displayRecipes();
 });
 
@@ -15,8 +16,14 @@ function displayRecipes() {
     var recipe = $('#recipe-value').val();
     console.log(recipe);
 
+<<<<<<< HEAD
     var queryUrl = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/searchComplex?query=" + recipe + "&fillIngredients=true&instructionsRequired=true&addRecipeInformation=true&limitLicense=true&offset=" + offset + "&number=10&mashape-key=d20470ce32mshdbfd156afdd96dap16c402jsn7739274350bc";
+=======
+>>>>>>> 16237b4a21bdecd5fb8c2d5b4be10f281f1ba35d
 
+    var queryUrl = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/searchComplex?query=" + recipe + "&fillIngredients=true&instructionsRequired=true&addRecipeInformation=true&limitLicense=true&" + offset + "=0&number=10&mashape-key=d20470ce32mshdbfd156afdd96dap16c402jsn7739274350bc";
+    /*var queryUrl = "https://api.edamam.com/search?q=" + recipe + "&app_id=45939a6b&app_key=e37d7f29462257f1fa878816ec76418f&limit=10&offset=" + offset;*/
+    
     // Creating an AJAX call for the specific search button being clicked.
 
     $.ajax({
@@ -24,6 +31,10 @@ function displayRecipes() {
         method: "GET"
     }).then(function (response) {
 
+<<<<<<< HEAD
+=======
+        debugger;
+>>>>>>> 16237b4a21bdecd5fb8c2d5b4be10f281f1ba35d
 
         // create a for to get the 10 elements from the data. 
         for (var i = 0; i < response.results.length; i++) {
