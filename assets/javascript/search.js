@@ -1,7 +1,7 @@
 $(document).on("click", ".btn-danger", function (event) {
     event.preventDefault();
     debugger;
-    //displayRecipes();
+    displayRecipes();
 });
 
 
