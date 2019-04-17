@@ -35,7 +35,7 @@
                                         <input id="recipe-value" name="recipe-value" class="form-control" type="text"
                                             placeholder="Search for recipe">
                                         <div class="col-auto">
-                                            <button class="btn btn-danger" type="submit"><i
+                                            <button id="recipe-submit" class="btn btn-danger" type="submit"><i
                                                     class="fas fa-search text-body"></i></button>
                                         </div>
                                     </div>
@@ -46,6 +46,7 @@
                     <br>
                     <div class="row">
                         <div class="col-lg-12">
+                            <!-- TODO: placeholder, to be replaced -->
                             <a href="#" id="random-recipe" class="btn btn-danger">Find Random Recipe</a>
                         </div>
                     </div>
@@ -56,22 +57,19 @@
                                 <h5 class="card-title">Saved Recipes</h5>
                             </div>
                             <div class="col-lg-1">
-                                <button id="recipe-eraser-btn" class="btn card-title"><i
-                                        class="fas fa-eraser"></i></button>
+                                <button id="recipe-trash-btn" class="btn card-title"><i class="far fa-trash-alt"></i></button>
                             </div>
                         </div>
                     </div>
                     <ul id="saved-recipes" class="list">
-                        <li>Breakfeast Burrito</li>
-                        <li>Burger</li>
-                        <li>Milk Steak</li>
-                        <li>Garlic Chicken</li>
-                        <li>Guacamole</li>
-                        <li>Chicken Parm</li>
-                        <li>Steak Tartare</li>
-                        <li>Pad Thai</li>
-                        <li>Tartar Sauce</li>
-                        <li></li>
+
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Breakfeast Burrito</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Burger</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Milk Steak</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Garlic Chicken</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Guacamole</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Chicken Parm</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Guacamole</li>
                     </ul>
                 </div>
             </div>
@@ -134,13 +132,11 @@
                                 </div>
                                 <div class="col-lg-1">
                                     <br>
-                                    <button id="clipboard-btn" class="btn card-title"><i
-                                            class="fas fa-clipboard-list"></i></button>
+                                    <button id="add-current-recipe-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>
                                 </div>
                                 <div class="col-lg-1">
                                     <br>
-                                    <button id="shopping-cart-btn" class="btn card-title"><i
-                                            class="fas fa-shopping-cart"></i></button>
+                                    <button id="add-to-shopping-list-btn" class="btn card-title"><i class="far fa-trash-alt"></i></button>
                                 </div>
                             </div>
                             <ul id="current-recipe-list" class="list">
@@ -167,7 +163,7 @@
                                         <input id="shopping-list-value" name="shopping-list-value" class="form-control"
                                             type="text" placeholder="Search shopping list">
                                         <div class="col-auto">
-                                            <button class="btn btn-danger" type="submit"><i
+                                            <button id="search-shopping-list" class="btn btn-danger" type="submit"><i
                                                     class="fas fa-search text-body"></i></button>
                                         </div>
                                     </div>
@@ -188,8 +184,7 @@
                                 <h5 class="card-title">Saved Recipes for Shopping</h5>
                             </div>
                             <div class="col-lg-1">
-                                <button id="shopping-eraser-btn" class="btn card-title"><i
-                                        class="fas fa-eraser"></i></button>
+                                <button id="shopping-trash-btn" class="btn card-title"><i class="far fa-trash-alt"></i></button>
                             </div>
                         </div>
                     </div>
@@ -224,14 +219,13 @@
                         </div> -->
                         <!--Add the body of the train schedule-->
                         <div class="card-body">
-                            <div id="line"></div>
                             <table id="list" class="table">
                                 <thead>
                                     <tr>
                                         <th class="table-head" scope="col"></th>
                                         <th class="table-head" scope="col">Amount</th>
                                         <th class="table-head" scope="col">Ingredient</th>
-                                        <th class="table-head" scope="col">Location</th>
+                                        <!-- <th class="table-head" scope="col">Location</th>-->
                                         <th class="table-head " scope="col">Recipe</th>
                                     </tr>
                                 </thead>
@@ -260,11 +254,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.9.0/math.min.map"></script>
     <!-- jQuery Link -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
 
-    <script src="assets\javascript\list-save.js"></script>
-    <script src="assets\javascript\search.js"></script>
-    <script src="assets\javascript\swipe.js"></script>
-    <script src="assets\javascript\favs.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyA0qcq1DO0TyZwjmUpFme1gy2XUN5SApiE",
+        authDomain: "recipe-buddy-20e3d.firebaseapp.com",
+        databaseURL: "https://recipe-buddy-20e3d.firebaseio.com",
+        projectId: "recipe-buddy-20e3d",
+        storageBucket: "recipe-buddy-20e3d.appspot.com",
+        messagingSenderId: "330550503875"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <script src="assets/javascript/list-save.js"></script>
+    <script src="assets/javascript/shop-list.js"></script>
+    <script src="assets/javascript/trash-item.js"></script>
+    <script src="assets/javascript/search.js"></script>
+    <script src="assets/javascript/swipe.js"></script>
+    <script src="assets/javascript/favs.js"></script>
 </body>
 
 </html>
