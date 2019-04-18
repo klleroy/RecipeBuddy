@@ -118,9 +118,5 @@ function displayRecipes() {
 
 
         }
-
-
-
     });
-
-}
+};

@@ -203,6 +203,46 @@
 
         </div>
     </div>
+    <div class="container">
+        <div class="row" id="map-holder">
+            <div id="map" class="col-md-12">
+                <div class="card">
+                    <div class="row" id="map-head">
+                        <div class="col-md-12">
+                            <br>
+                            <h4 class="card-title">Grocery Store Search                                 <button id="map-btn" class="btn card-title"><i class="far fa-list-alt"></i></button> </h4>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2 address">
+                                <label for="name-input">Address</label>
+                                <input type="text" class="form-control" id="address-input" placeholder="742" />
+                            </div>
+                            <div class="col-md-3">
+                                <label for="name-input">Street</label>
+                                <input type="text" class="form-control" id="street-input" placeholder="Evergreen tr" />
+                            </div>
+                            <div class="col-md-3">
+                                <label for="name-input">City</label>
+                                <input type="text" class="form-control" id="city-input" placeholder="Springfield" />
+                            </div>
+                            <div class="col-md-1">
+                                <label for="name-input">State</label>
+                                <input type="text" class="form-control" id="state-input" placeholder="WA" />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="name-input">Zip Code</label>
+                                <input type="text" class="form-control" id="zip-input" placeholder="98155" />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="googleMap" class="google-map-small"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div>
         <!--the List will be added in a modal-->
         <div id="modal-holder">
@@ -270,13 +310,15 @@
         };
         firebase.initializeApp(config);
     </script>
-
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBoFTlFdN-ElAc6fnn-M8hagD8cU0Lem38"></script>
     <script src="assets/javascript/list-save.js"></script>
     <script src="assets/javascript/shop-list.js"></script>
     <script src="assets/javascript/trash-item.js"></script>
     <script src="assets/javascript/search.js"></script>
     <script src="assets/javascript/swipe.js"></script>
     <script src="assets/javascript/favs.js"></script>
+    <script src="assets/javascript/map.js"></script>
 </body>
 
 </html>
