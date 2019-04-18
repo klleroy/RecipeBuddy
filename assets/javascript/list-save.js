@@ -2,108 +2,7 @@ let shoplist = [];
 let selected_recipe_list = [];
 let units = ['cup', 'cp', 'pint', 'pt', 'quart', 'qt', 'gallon', 'gal', 'teaspoon', 'tablespoon', 'cups', 'cps', 'pints', 'pts', 'quarts', 'qts', 'gallons', 'gals', 'teaspoons', 'tablespoons', "ounce", "ounces", "pound", "pounds",]
 $("li").remove();
-/*let missedIngredients = [
-    {
-        id: 10023567,
-        amount: 1,
-        unit: "pounds",
-        unitLong: "pound",
-        unitShort: "lb",
-        aisle: "Meat",
-        name: "ground sirloin",
-        original: "1 pound(s) ground sirloin",
-        originalString: "1 pound(s) ground sirloin",
-        originalName: "pound(s) ground sirloin",
-        metaInformation: [],
-        image: "https://spoonacular.com/cdn/ingredients_100x100/fresh-ground-beef.jpg"
-    },
-    {
-        id: 10023567,
-        amount: 0.5,
-        unit: "pound",
-        unitLong: "pounds",
-        unitShort: "lb",
-        aisle: "Meat",
-        name: "ground sirloin",
-        original: "1/2 pound ground Sirloin",
-        originalString: "1/2 pound ground Sirloin",
-        originalName: "ground Sirloin",
-        metaInformation: [],
-        image: "https://spoonacular.com/cdn/ingredients_100x100/fresh-ground-beef.jpg"
-    },
-    {
-        id: 18079,
-        amount: 0.25,
-        unit: "cup",
-        unitLong: "cups",
-        unitShort: "cup",
-        aisle: "Pasta and Rice",
-        name: "dry bread crumbs",
-        original: "1/4 cup dry bread Crumbs",
-        originalString: "1/4 cup dry bread Crumbs",
-        originalName: "dry bread Crumbs",
-        metaInformation: ["dry"],
-        "image": "https://spoonacular.com/cdn/ingredients_100x100/breadcrumbs.jpg"
-    },
-    {
-        id: 27048,
-        amount: 0.5,
-        unit: "cup",
-        unitLong: "cups",
-        unitShort: "cup",
-        aisle: "Condiments",
-        name: "steak sauce",
-        original: "1/2 cup steak sauce",
-        originalString: "1/2 cup steak sauce",
-        originalName: "steak sauce",
-        metaInformation: [],
-        image: "https://spoonacular.com/cdn/ingredients_100x100/dark-sauce.jpg"
-    },
-    {
-        id: 1123,
-        amount: 1,
-        unit: "large",
-        unitLong: "large",
-        unitShort: "large",
-        aisle: "Milk, Eggs, Other Dairy",
-        name: "egg",
-        original: "1 large egg",
-        originalString: "1 large egg",
-        originalName: "egg",
-        metaInformation: [],
-        image: "https://spoonacular.com/cdn/ingredients_100x100/egg.png"
-    },
-    {
-        id: 18350,
-        amount: 4,
-        unit: "",
-        unitLong: "",
-        unitShort: "",
-        aisle: "Bakery/Bread",
-        name: "hamburger buns",
-        original: "4 hamburger buns",
-        originalString: "4 hamburger buns",
-        originalName: "hamburger buns",
-        metaInformation: [],
-        image: "https://spoonacular.com/cdn/ingredients_100x100/hamburger-bun.jpg"
-    },
-    {
-        id: 1004,
-        amount: 4,
-        unit: "ounces",
-        unitLong: "ounces",
-        unitShort: "oz",
-        aisle: "Cheese",
-        name: "blue cheese",
-        original: "4 ounces sliced blue cheese",
-        originalString: "4 ounces sliced blue cheese",
-        originalName: "sliced blue cheese",
-        metaInformation: ["blue", "sliced"],
-        image: "https://spoonacular.com/cdn/ingredients_100x100/blue-cheese.png"
-    }
-]
-parse_item(missedIngredients, "Burger");*/
-function parse_item(ingredient_list, title) {
+function parse_item(ingredient_list, title, id) {
 
     ingredient_list.forEach(function (elem) {
         let item = {
@@ -112,7 +11,8 @@ function parse_item(ingredient_list, title) {
             unit: "",
             location: "",
             recipe: "",
-            math_unit: ""
+            math_unit: "",
+            id: ""
         }
         item.ingredient = elem.name;
         item.amount = elem.amount;
@@ -121,6 +21,7 @@ function parse_item(ingredient_list, title) {
         item.recipe = title;
         item.clean_unit = clean_unit(elem.unit)
         /*item.recipe = elem*/
+        item.id = id;
         if (item.clean_unit != "") {
             item.math_unit = math.unit(elem.amount, item.clean_unit)
         }
@@ -277,7 +178,7 @@ function insert(item) {
 var modal = "";
 // Get the modal
 $(document).ready(function () {
-    modal = document.getElementById('myModal');
+    modal = document.getElementById('modal-holder');//'myModal');
     return false;
 })
 
@@ -291,7 +192,7 @@ btn.onclick = function () {
 
 function clearModal() {
     $("td").remove();
-    $("tr").remove();
+    //$("tr").remove();
 }
 
 function closeModal() {
@@ -389,6 +290,12 @@ $(document.body).on("click", ".jerky", function () {
         }
     }
 });
+$("#add-current-recipe-btn").on("click", function(){
+    //use the ID of the current recipe to find the object in the array
+    //then call the move_to_list to add it
+    
+    move_to_list(recipes[1]);
+});
 
 $("#shopping-trash-btn").on("click", function () {
     let i = 0;
@@ -409,7 +316,7 @@ $("#build-list").on("click", function () {
     for (i = 0; i < shoplist.length; i++) {
         //shoplist.forEach(function (elem) {
         //make table row
-        let table_row = $("<tr>");
+        let table_row = $("<tr id='" + shoplist[i].id + "'>");
 
         //make table data checkbox
         let td = $("<td>");
@@ -435,14 +342,14 @@ $("#build-list").on("click", function () {
         table_row.append(td);
 
 
-        //make table data recipe
+/*        //make table data recipe
         td = $("<td>");
         td.text(shoplist[i].recipe);
         table_row.append(td);
-
+*/
 
         //append table row to the table
-        $("#list").append(table_row);
+        $("#list").prepend(table_row);
     };
 
     modal.style.display = "block";
