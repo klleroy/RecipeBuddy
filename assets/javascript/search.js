@@ -30,9 +30,16 @@ function displayRecipes() {
         method: "GET"
     }).then(function (response) {
 
+<<<<<<< HEAD
         //debugger;
 
     ;
+=======
+
+
+        recipes = response.results;
+        move_to_list(recipes[1]);
+>>>>>>> 7021c9d0bd9c527fdb878a3e4ed57dc07a0a7bf8
 
         // create a for to get the 10 elements from the data. 
         for (var i = 0; i < response.results.length; i++) {
@@ -111,6 +118,14 @@ function displayRecipes() {
         }
 
 
+<<<<<<< HEAD
     });
 
 }
+=======
+
+                var descriptionOfFood = $("<h3 id = '" + id + "'>").text(response.results[i].id);
+                $("#" + id).append(descriptionOfFood);
+
+
+>>>>>>> 7021c9d0bd9c527fdb878a3e4ed57dc07a0a7bf8
