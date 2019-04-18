@@ -1,5 +1,5 @@
-let favs = [];
-let recipes = [];
+var favs = [];
+var recipes = [];
 
 $(document).on("click", "#recipe-submit", function (event) {
     event.preventDefault();
