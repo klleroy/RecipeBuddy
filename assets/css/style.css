@@ -25,7 +25,7 @@ body {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 #modal-holder{
-    overflow: scroll;
+    /*overflow: scroll;*/
 }
 
 .fas, .far {
@@ -267,3 +267,22 @@ button.card-title {
     height: 81%;
     left: 45px;
 }
+#map-holder{
+  height:25px;
+  margin-top: 15px;
+}
+#map-head{
+  height:90px;
+}
+.google-map-small{
+  height:20px;
+  width:100%;
+}
+.google-map-tall{
+  height:400px;
+  width:100%;
+}
+.address{
+  margin-left:40px;
+}
+

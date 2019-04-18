@@ -178,7 +178,7 @@ function insert(item) {
 var modal = "";
 // Get the modal
 $(document).ready(function () {
-    modal = document.getElementById('myModal');
+    modal = document.getElementById('modal-holder');//'myModal');
     return false;
 })
 

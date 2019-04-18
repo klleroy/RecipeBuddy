@@ -57,19 +57,27 @@
                                 <h5 class="card-title">Saved Recipes</h5>
                             </div>
                             <div class="col-lg-1">
-                                <button id="recipe-trash-btn" class="btn card-title"><i class="far fa-trash-alt"></i></button>
+                                <button id="recipe-trash-btn" class="btn card-title"><i
+                                        class="far fa-trash-alt"></i></button>
                             </div>
                         </div>
                     </div>
                     <ul id="saved-recipes" class="list">
 
-                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Breakfeast Burrito</li>
-                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Burger</li>
-                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Milk Steak</li>
-                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Garlic Chicken</li>
-                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Guacamole</li>
-                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Chicken Parm</li>
-                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Guacamole</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i
+                                    class="far fa-list-alt"></i></button>Breakfeast Burrito</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i
+                                    class="far fa-list-alt"></i></button>Burger</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i
+                                    class="far fa-list-alt"></i></button>Milk Steak</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i
+                                    class="far fa-list-alt"></i></button>Garlic Chicken</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i
+                                    class="far fa-list-alt"></i></button>Guacamole</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i
+                                    class="far fa-list-alt"></i></button>Chicken Parm</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i
+                                    class="far fa-list-alt"></i></button>Guacamole</li>
                     </ul>
                 </div>
             </div>
@@ -132,11 +140,13 @@
                                 </div>
                                 <div class="col-lg-1">
                                     <br>
-                                    <button id="add-current-recipe-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>
+                                    <button id="add-current-recipe-btn" class="btn card-title"><i
+                                            class="far fa-list-alt"></i></button>
                                 </div>
                                 <div class="col-lg-1">
                                     <br>
-                                    <button id="add-to-shopping-list-btn" class="btn card-title"><i class="far fa-trash-alt"></i></button>
+                                    <button id="add-to-shopping-list-btn" class="btn card-title"><i
+                                            class="far fa-trash-alt"></i></button>
                                 </div>
                             </div>
                             <ul id="current-recipe-list" class="list">
@@ -184,7 +194,8 @@
                                 <h5 class="card-title">Saved Recipes for Shopping</h5>
                             </div>
                             <div class="col-lg-1">
-                                <button id="shopping-trash-btn" class="btn card-title"><i class="far fa-trash-alt"></i></button>
+                                <button id="shopping-trash-btn" class="btn card-title"><i
+                                        class="far fa-trash-alt"></i></button>
                             </div>
                         </div>
                     </div>
@@ -201,27 +212,46 @@
 
         </div>
     </div>
-    <div class="row">
-            <div id="yelp" class="col-md-12">
+    <div class="container">
+        <div class="row" id="map-holder">
+            <div id="map" class="col-md-12">
                 <div class="card">
-                    <div class="row">
-                        <div class="col-lg-9">
+                    <div class="row" id="map-head">
+                        <div class="col-md-12">
                             <br>
-                            <h3 class="card-title">Google Map Store Search</h3>
+                            <h4 class="card-title">Grocery Store Search                                 <button id="map-btn" class="btn card-title"><i class="far fa-list-alt"></i></button> </h4>
                             <br>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="name-input">Zip Code</label>
-                        <input type="text" class="form-control" id="zip-input" placeholder="98155" />
-                        <button id="map-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>
-    
+                        <div class="row">
+                            <div class="col-md-2 address">
+                                <label for="name-input">Address</label>
+                                <input type="text" class="form-control" id="address-input" placeholder="742" />
+                            </div>
+                            <div class="col-md-3">
+                                <label for="name-input">Street</label>
+                                <input type="text" class="form-control" id="street-input" placeholder="Evergreen tr" />
+                            </div>
+                            <div class="col-md-3">
+                                <label for="name-input">City</label>
+                                <input type="text" class="form-control" id="city-input" placeholder="Springfield" />
+                            </div>
+                            <div class="col-md-1">
+                                <label for="name-input">State</label>
+                                <input type="text" class="form-control" id="state-input" placeholder="WA" />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="name-input">Zip Code</label>
+                                <input type="text" class="form-control" id="zip-input" placeholder="98155" />
+                            </div>
+                        </div>
                     </div>
-                    <div id="googleMap" style="width:100%;height:400px;"></div>
+                    <div id="googleMap" class="google-map-small"></div>
                 </div>
             </div>
         </div>
-    
+    </div>
     <div>
         <!--the List will be added in a modal-->
         <div id="modal-holder">
@@ -278,18 +308,19 @@
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
 
     <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyA0qcq1DO0TyZwjmUpFme1gy2XUN5SApiE",
-        authDomain: "recipe-buddy-20e3d.firebaseapp.com",
-        databaseURL: "https://recipe-buddy-20e3d.firebaseio.com",
-        projectId: "recipe-buddy-20e3d",
-        storageBucket: "recipe-buddy-20e3d.appspot.com",
-        messagingSenderId: "330550503875"
-      };
-      firebase.initializeApp(config);
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyA0qcq1DO0TyZwjmUpFme1gy2XUN5SApiE",
+            authDomain: "recipe-buddy-20e3d.firebaseapp.com",
+            databaseURL: "https://recipe-buddy-20e3d.firebaseio.com",
+            projectId: "recipe-buddy-20e3d",
+            storageBucket: "recipe-buddy-20e3d.appspot.com",
+            messagingSenderId: "330550503875"
+        };
+        firebase.initializeApp(config);
     </script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBoFTlFdN-ElAc6fnn-M8hagD8cU0Lem38"></script>
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBoFTlFdN-ElAc6fnn-M8hagD8cU0Lem38"></script>
     <script src="assets/javascript/list-save.js"></script>
     <script src="assets/javascript/shop-list.js"></script>
     <script src="assets/javascript/trash-item.js"></script>

@@ -5,9 +5,19 @@ var infowindow;
 //function initialize() {
 $("#map-btn").on("click", function () {
     debugger;
+    $(".google-map-small").addClass("google-map-tall");
+    $(".google-map-small").removeClass("google-map-small");
+
     var geocoder = new google.maps.Geocoder();
-    var address = $("#zip-input").val();
+    var address = $("#address-input").val();
+    var street = $("#street-input").val();
+    var city = $("#city-input").val();
+    var state = $("#state-input").val();
+    var zip = $("#zip-input").val();
+
+    address = address+"+"+street+"+"+city+"+"+state+"+"+zip;
     var queryUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyBoFTlFdN-ElAc6fnn-M8hagD8cU0Lem38"
+    //https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway+Mountain+View,+CA&key=YOUR_API_KEY
     var center;
 
     $.ajax({
@@ -20,13 +30,13 @@ $("#map-btn").on("click", function () {
         center = new google.maps.LatLng(lat, lng )
         map = new google.maps.Map(document.getElementById('googleMap'), {
             center: center,
-            zoom: 15
+            zoom: 12
         });
 
         var request = {
             location: center,
-            radius: '846',
-            type: ['grocery store']
+            radius: '15000',
+            type: ['supermarket']
         };
 
         service = new google.maps.places.PlacesService(map);
