@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
         integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link href="https://cdnjs.com/libraries/mathjs">
+    <link href="https://fonts.googleapis.com/css?family=Gochi+Hand" rel="stylesheet">
 </head>
 
 <body>
@@ -17,7 +18,7 @@
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">Recipe Buddy</h1>
-            <p class="lead">[insert witty slogan here]</p>
+            <p class="lead">Focus less on shopping, and more on cooking!</p>
         </div>
     </div>
 
@@ -57,30 +58,45 @@
                                 <h5 class="card-title">Saved Recipes</h5>
                             </div>
                             <div class="col-lg-1">
-                                <button id="recipe-trash-btn" class="btn card-title"><i class="far fa-trash-alt"></i></button>
+                                <button id="recipe-trash-btn" class="btn card-title"><i
+                                        class="far fa-trash-alt"></i></button>
                             </div>
                         </div>
                     </div>
                     <ul id="saved-recipes" class="list">
 
-                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Breakfeast Burrito</li>
-                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Burger</li>
-                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Milk Steak</li>
-                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Garlic Chicken</li>
-                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Guacamole</li>
-                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Chicken Parm</li>
-                        <li><button id="shopping-cart-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>Guacamole</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i
+                                    class="far fa-list-alt"></i></button>Breakfeast Burrito</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i
+                                    class="far fa-list-alt"></i></button>Burger</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i
+                                    class="far fa-list-alt"></i></button>Milk Steak</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i
+                                    class="far fa-list-alt"></i></button>Garlic Chicken</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i
+                                    class="far fa-list-alt"></i></button>Guacamole</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i
+                                    class="far fa-list-alt"></i></button>Chicken Parm</li>
+                        <li><button id="shopping-cart-btn" class="btn card-title"><i
+                                    class="far fa-list-alt"></i></button>Guacamole</li>
                     </ul>
                 </div>
             </div>
             <div id="carousel" class="col-md-6">
                 <div class="container">
-                    <div id="food-carousel" class="carousel slide carousel-fade" data-ride="carousel"
+                    <div id="food-carousel" class="carousel slide" data-ride="carousel"
                         data-interval="false">
                         <ol class="carousel-indicators">
                             <li data-target="#food-carousel" data-slide-to="0" class="active"></li>
                             <li data-target="#food-carousel" data-slide-to="1"></li>
                             <li data-target="#food-carousel" data-slide-to="2"></li>
+                            <li data-target="#food-carousel" data-slide-to="3"></li>
+                            <li data-target="#food-carousel" data-slide-to="4"></li>
+                            <li data-target="#food-carousel" data-slide-to="5"></li>
+                            <li data-target="#food-carousel" data-slide-to="6"></li>
+                            <li data-target="#food-carousel" data-slide-to="7"></li>
+                            <li data-target="#food-carousel" data-slide-to="8"></li>
+                            <li data-target="#food-carousel" data-slide-to="9"></li>
                         </ol>
                         <div class="carousel-inner" role="listbox option">
                             <div class="carousel-item active">
@@ -88,25 +104,8 @@
                                 <div class="carousel-caption-like">
                                     <i class="far fa-heart fav"></i>
                                 </div>
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>[NAME OF FOOD]</h5>
-                                    <p>[DESCRIPTION OF FOOD]</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <i class="far fa-heart fav"></i>
-                                <img src="assets/images/guacamole2.jpg" class="d-block img-fluid" alt="food2">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>[NAME OF FOOD]</h5>
-                                    <p>[DESCRIPTION OF FOOD]</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <i class="far fa-heart fav"></i>
-                                <img src="assets/images/guacamole3.jpg" class="d-block img-fluid" alt="food3">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>[NAME OF FOOD]</h5>
-                                    <p>[DESCRIPTION OF FOOD]</p>
+                                <div class="carousel-caption d-md-block">
+                                    <p>This. Is. Guac.</p>
                                 </div>
                             </div>
                         </div>
@@ -127,16 +126,18 @@
                             <div class="row">
                                 <div class="col-lg-9">
                                     <br>
-                                    <h3 class="card-title">Current Recipe:[TODO: INSERT RECIPE NAME HERE]</h3>
+                                    <h3 class="card-title" id="currentName">Current Recipe: Search for a new recipe, then click the picture to view it! </h3>
                                     <br>
                                 </div>
                                 <div class="col-lg-1">
                                     <br>
-                                    <button id="add-current-recipe-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>
+                                    <button id="add-current-recipe-btn" class="btn card-title"><i
+                                            class="far fa-list-alt"></i></button>
                                 </div>
                                 <div class="col-lg-1">
                                     <br>
-                                    <button id="add-to-shopping-list-btn" class="btn card-title"><i class="far fa-trash-alt"></i></button>
+                                    <button id="add-to-shopping-list-btn" class="btn card-title"><i
+                                            class="far fa-trash-alt"></i></button>
                                 </div>
                             </div>
                             <ul id="current-recipe-list" class="list">
@@ -184,7 +185,8 @@
                                 <h5 class="card-title">Saved Recipes for Shopping</h5>
                             </div>
                             <div class="col-lg-1">
-                                <button id="shopping-trash-btn" class="btn card-title"><i class="far fa-trash-alt"></i></button>
+                                <button id="shopping-trash-btn" class="btn card-title"><i
+                                        class="far fa-trash-alt"></i></button>
                             </div>
                         </div>
                     </div>
@@ -257,16 +259,16 @@
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
 
     <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyA0qcq1DO0TyZwjmUpFme1gy2XUN5SApiE",
-        authDomain: "recipe-buddy-20e3d.firebaseapp.com",
-        databaseURL: "https://recipe-buddy-20e3d.firebaseio.com",
-        projectId: "recipe-buddy-20e3d",
-        storageBucket: "recipe-buddy-20e3d.appspot.com",
-        messagingSenderId: "330550503875"
-      };
-      firebase.initializeApp(config);
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyA0qcq1DO0TyZwjmUpFme1gy2XUN5SApiE",
+            authDomain: "recipe-buddy-20e3d.firebaseapp.com",
+            databaseURL: "https://recipe-buddy-20e3d.firebaseio.com",
+            projectId: "recipe-buddy-20e3d",
+            storageBucket: "recipe-buddy-20e3d.appspot.com",
+            messagingSenderId: "330550503875"
+        };
+        firebase.initializeApp(config);
     </script>
 
     <script src="assets/javascript/list-save.js"></script>
