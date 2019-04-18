@@ -1,7 +1,8 @@
 let shoplist = [];
+let selected_recipe_list = [];
 let units = ['cup', 'cp', 'pint', 'pt', 'quart', 'qt', 'gallon', 'gal', 'teaspoon', 'tablespoon', 'cups', 'cps', 'pints', 'pts', 'quarts', 'qts', 'gallons', 'gals', 'teaspoons', 'tablespoons', "ounce", "ounces", "pound", "pounds",]
-
-let missedIngredients = [
+$("li").remove();
+/*let missedIngredients = [
     {
         id: 10023567,
         amount: 1,
@@ -101,10 +102,10 @@ let missedIngredients = [
         image: "https://spoonacular.com/cdn/ingredients_100x100/blue-cheese.png"
     }
 ]
-parse_item();
-function parse_item() {
+parse_item(missedIngredients, "Burger");*/
+function parse_item(ingredient_list, title) {
 
-    missedIngredients.forEach(function (elem) {
+    ingredient_list.forEach(function (elem) {
         let item = {
             ingredient: "",
             amount: "",
@@ -116,7 +117,8 @@ function parse_item() {
         item.ingredient = elem.name;
         item.amount = elem.amount;
         item.unit = elem.unit;
-        item.location = elem.aisle
+        item.location = elem.aisle;
+        item.recipe = title;
         item.clean_unit = clean_unit(elem.unit)
         /*item.recipe = elem*/
         if (item.clean_unit != "") {
@@ -254,7 +256,7 @@ function insert(item) {
                     break;
                 }
             }
-            if(i===shoplist.length){
+            if (i === shoplist.length) {
                 shoplist[i] = item;
             }
         } else {
@@ -276,6 +278,7 @@ var modal = "";
 // Get the modal
 $(document).ready(function () {
     modal = document.getElementById('myModal');
+    return false;
 })
 
 /*// Get the button that opens the modal
@@ -286,7 +289,7 @@ btn.onclick = function () {
 	modal.style.display = "block";
 }*/
 
-function clearModal(){
+function clearModal() {
     $("td").remove();
     $("tr").remove();
 }
@@ -329,12 +332,72 @@ function format_amount(amount) {
     return return_val.trim();
 }
 
+function move_to_list(recipe) {
+    //console.log(recipe);
+    let ingredients = [];
+    let list_item;
+    let i = 0;
+    let found = false;
+
+    for(i=0; i<selected_recipe_list.length; i++){
+        if(selected_recipe_list[i].id === recipe.id){
+            found = true;
+            i = selected_recipe_list.length;
+        }
+    }
+
+    if (! found) {
+        //list_item = $("<li id='" + recipe.id + "'>"+recipe.title+"</li>");
+        list_item = $("<li id='" + recipe.id + "'><button id='shopping-list-trash-btn' data-id = '" + recipe.id + "' class='btn card-title jerky'><i class='far fa-trash-alt jerky' data-id ='" + recipe.id + "'></i></button>" + recipe.title + "</li>");
+        $("#saved-shopping-list-").append(list_item);
+        parse_item(recipe.missedIngredients, recipe.title);
+        selected_recipe_list.push(recipe);
+    }else
+        alert(recipe.title + " is already on the list");
+}
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
         closeModal();
     }
 }
+
+//$(document.body).on("click", ".giphyButton", function () {
+
+$(document.body).on("click", ".jerky", function () {
+    //$("#shopping-list-trash-btn").on("click", function(){
+    let i = 0;
+    let recipe = "";
+
+    //loop through selected recipe list and remove
+    for (i = 0; i < selected_recipe_list.length; i++) {
+        console.log(selected_recipe_list[i].id + " - " + $(this).attr("data-id"))
+        if (selected_recipe_list[i].id == $(this).attr("data-id")) {
+            $("#" + selected_recipe_list[i].id).remove();
+            recipe = selected_recipe_list[i].title;
+            selected_recipe_list.splice(i, 1);
+            i = selected_recipe_list.length;
+        }
+    };
+
+    //loop through shoplist and remove ingredients for this recipe 
+    for (i = 0; i < shoplist.length; i++) {
+        console.log(shoplist[i].recipe +" - " + recipe)
+        if (shoplist[i].recipe == recipe) {
+            shoplist.splice(i, 1);
+        }
+    }
+});
+
+$("#shopping-trash-btn").on("click", function () {
+    let i = 0;
+    for(i=0; i<selected_recipe_list.length; i++){
+        $("#" + selected_recipe_list[i].id).remove();
+    }
+    selected_recipe_list = "";
+    shoplist = "";
+});
 
 $("#myClose").on("click", function () {
     modal.style.display = "none";
