@@ -32,6 +32,7 @@ function displayRecipes() {
             // if (i === 0) {
             // var showImage = $("<div class='carousel-item active' id = '" + id + "'>");
             // }
+            
             // Showing the image when the button in clicked.
             var showImage = $("<div class='carousel-item' id = '" + id + "'>");
             // Id recipe from API
