@@ -100,4 +100,5 @@ function displayRecipes() {
                 var descriptionOfFood = $("<h3 id = '" + id + "'>").text(response.results[i].id);
                 $("#" + id).append(descriptionOfFood);
 
-
+    });
+}

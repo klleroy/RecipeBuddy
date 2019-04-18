@@ -201,6 +201,27 @@
 
         </div>
     </div>
+    <div class="row">
+            <div id="yelp" class="col-md-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <br>
+                            <h3 class="card-title">Google Map Store Search</h3>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name-input">Zip Code</label>
+                        <input type="text" class="form-control" id="zip-input" placeholder="98155" />
+                        <button id="map-btn" class="btn card-title"><i class="far fa-list-alt"></i></button>
+    
+                    </div>
+                    <div id="googleMap" style="width:100%;height:400px;"></div>
+                </div>
+            </div>
+        </div>
+    
     <div>
         <!--the List will be added in a modal-->
         <div id="modal-holder">
@@ -268,13 +289,14 @@
       };
       firebase.initializeApp(config);
     </script>
-
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBoFTlFdN-ElAc6fnn-M8hagD8cU0Lem38"></script>
     <script src="assets/javascript/list-save.js"></script>
     <script src="assets/javascript/shop-list.js"></script>
     <script src="assets/javascript/trash-item.js"></script>
     <script src="assets/javascript/search.js"></script>
     <script src="assets/javascript/swipe.js"></script>
     <script src="assets/javascript/favs.js"></script>
+    <script src="assets/javascript/map.js"></script>
 </body>
 
 </html>
