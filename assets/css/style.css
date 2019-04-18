@@ -1,7 +1,8 @@
 /* BODY FORMATTING */
 body {
   text-align: center;
-  background-color: bisque;
+  background: url(../images/Cork-Texture-Design.png);
+  font-family: 'Gochi Hand', cursive;
 }
 
 /*Center text on the Jumbotron and the table rows*/
