@@ -1,14 +1,16 @@
-let favs = [];
-let recipes = [];
-$(document).on("click", ".btn-danger", function (event) {
+var favs = [];
+var recipes = [];
+
+$(document).on("click", "#recipe-submit", function (event) {
     event.preventDefault();
     //debugger;
+    $("#carousel-filler").empty();
     displayRecipes();
+    $("#current-recipe-list").show();
 });
 
 
-var
-    chooseRecipe = true;
+var chooseRecipe = true;
 var favorite;
 
 
@@ -29,7 +31,7 @@ function displayRecipes() {
         method: "GET"
     }).then(function (response) {
 
-
+        //debugger;
 
         recipes = response.results;
         move_to_list(recipes[1]);
@@ -39,6 +41,7 @@ function displayRecipes() {
 
             var id = response.results[i].id;
             // Showing the image when the button in clicked.
+            var favIcon = $(`<div class="carousel-caption-like"><i class="far fa-heart fav"></i></div>`);
             var showImage = $("<div class='carousel-item' id = '" + id + "'>");
             showImage.attr('data-name', response.results[i].title);
             showImage.attr('data-index', i);
@@ -55,8 +58,8 @@ function displayRecipes() {
             // console.log(id);
 
             showImage.append(image);
-            
-            var descriptionOfFood = $("<h3 id = '" + id + "'>").text(response.results[i].title);
+
+            var descriptionOfFood = $("<h3 id = 'item-" + id + "'>").text(response.results[i].title);
             showImage.append(descriptionOfFood)
 
             //$("#" + id).append(descriptionOfFood);
@@ -65,7 +68,11 @@ function displayRecipes() {
             //console.log(ingredientsP);
 
             showImage.on("click", function () {
-                
+                $("#current-recipe-list").empty();
+                $("#currentName").empty();
+                $("#current-recipe-list").show();
+                $("#currentName").show();
+
                 // var idRecipe = $(this).attr('id');
                 var recipeName = $(this).attr('data-name');
                 $("#currentName").append(recipeName);
@@ -78,8 +85,9 @@ function displayRecipes() {
                 response.results[1].missedIngredients = [ {..ingredient0..}. {..ingredient1..}, ..........]
                 response.results[1].missedIngredients.length = [].lenght = quantity of ingredient objects in the array
                 */
-               var recipe = response.results[recipeIndex];
-               console.log(recipe.missedIngredients.length);
+                var recipe = response.results[recipeIndex];
+                console.log(recipe.missedIngredients.length);
+
                 for (var i = 0; i < recipe.missedIngredients.length; i++) {
 
                     var ingredientList = $("#current-recipe-list");
@@ -87,18 +95,24 @@ function displayRecipes() {
                     console.log(recipe.missedIngredients[i].original);
                     $(".list").append(ingredientList);
                 }
-                
+
             });
 
+            // then add the like button / icon
+            $(".carousel-inner").append(favIcon);
+            // then add the newly searched item in
             $(".carousel-inner").append(showImage);
+
 
 
         }
 
 
 
-                var descriptionOfFood = $("<h3 id = '" + id + "'>").text(response.results[i].id);
-                $("#" + id).append(descriptionOfFood);
+
+
+
 
     });
-}
+};
+
