@@ -31,10 +31,13 @@ function displayRecipes() {
         method: "GET"
     }).then(function (response) {
 
+
         //debugger;
+
 
         recipes = response.results;
         move_to_list(recipes[1]);
+
 
         // create a for to get the 10 elements from the data. 
         for (var i = 0; i < response.results.length; i++) {
@@ -62,18 +65,29 @@ function displayRecipes() {
             var descriptionOfFood = $("<h3 id = 'item-" + id + "'>").text(response.results[i].title);
             showImage.append(descriptionOfFood)
 
+            var DivIcon = $("<div class='carousel-caption-like'>");
+            var favIcon = $("<i class='far fa-heart fav'>");
+            DivIcon.append(favIcon);
+            showImage.append(DivIcon);
+
+            var carouselIndicators = $("<li data-target= '#food-carousel' data-slide-to = '" + i + "' class>");
+            console.log(carouselIndicators);
+
+
             //$("#" + id).append(descriptionOfFood);
 
             //var ingredientsP = response.results[i].missedIngredients;
             //console.log(ingredientsP);
 
             showImage.on("click", function () {
+
                 $("#current-recipe-list").empty();
                 $("#currentName").empty();
                 $("#current-recipe-list").show();
                 $("#currentName").show();
 
                 // var idRecipe = $(this).attr('id');
+
                 var recipeName = $(this).attr('data-name');
                 $("#currentName").append(recipeName);
 
@@ -85,34 +99,24 @@ function displayRecipes() {
                 response.results[1].missedIngredients = [ {..ingredient0..}. {..ingredient1..}, ..........]
                 response.results[1].missedIngredients.length = [].lenght = quantity of ingredient objects in the array
                 */
+
                 var recipe = response.results[recipeIndex];
                 console.log(recipe.missedIngredients.length);
 
                 for (var i = 0; i < recipe.missedIngredients.length; i++) {
-
+                
                     var ingredientList = $("#current-recipe-list");
                     ingredientList.append($('<li>').text(recipe.missedIngredients[i].original));
                     console.log(recipe.missedIngredients[i].original);
                     $(".list").append(ingredientList);
                 }
-
             });
 
-            // then add the like button / icon
-            $(".carousel-inner").append(favIcon);
-            // then add the newly searched item in
-            $(".carousel-inner").append(showImage);
 
+            $(".carousel-inner").append(showImage);
+            $(".carousel-indicators").append(carouselIndicators);
 
 
         }
-
-
-
-
-
-
-
     });
 };
-
