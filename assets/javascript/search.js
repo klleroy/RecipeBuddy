@@ -1,7 +1,10 @@
+let favs = [];
+let recipes = [];
 $(document).on("click", ".btn-danger", function (event) {
     event.preventDefault();
     //debugger;
     displayRecipes();
+    $("#current-recipe-list").show();
 });
 
 
@@ -16,12 +19,6 @@ function displayRecipes() {
     var recipe = $('#recipe-value').val();
     console.log(recipe);
 
-<<<<<<< HEAD
-=======
-
-    var queryUrl = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/searchComplex?query=" + recipe + "&fillIngredients=true&instructionsRequired=true&addRecipeInformation=true&limitLicense=true&offset=" + offset + "&number=10&mashape-key=d20470ce32mshdbfd156afdd96dap16c402jsn7739274350bc";
-
->>>>>>> d5e169edd75a07cae8054a5228b3c77efa974978
 
     var queryUrl = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/searchComplex?query=" + recipe + "&fillIngredients=true&instructionsRequired=true&addRecipeInformation=true&limitLicense=true&offset=" + offset + "&number=10&mashape-key=d20470ce32mshdbfd156afdd96dap16c402jsn7739274350bc";
     /*var queryUrl = "https://api.edamam.com/search?q=" + recipe + "&app_id=45939a6b&app_key=e37d7f29462257f1fa878816ec76418f&limit=10&offset=" + offset;*/
@@ -33,11 +30,10 @@ function displayRecipes() {
         method: "GET"
     }).then(function (response) {
 
-<<<<<<< HEAD
         //debugger;
 
-=======
->>>>>>> d5e169edd75a07cae8054a5228b3c77efa974978
+    ;
+
         // create a for to get the 10 elements from the data. 
         for (var i = 0; i < response.results.length; i++) {
 
@@ -63,14 +59,27 @@ function displayRecipes() {
             var descriptionOfFood = $("<h3 id = '" + id + "'>").text(response.results[i].title);
             showImage.append(descriptionOfFood)
 
+            var DivIcon = $("<div class='carousel-caption-like'>");
+            var favIcon = $("<i class='far fa-heart fav'>");
+            DivIcon.append(favIcon);
+            showImage.append(DivIcon);
+
+            var carouselIndicators = $("<li data-target= '#food-carousel' data-slide-to = '" + i + "' class>");
+            console.log(carouselIndicators);
+
+
             //$("#" + id).append(descriptionOfFood);
 
             //var ingredientsP = response.results[i].missedIngredients;
             //console.log(ingredientsP);
 
             showImage.on("click", function () {
-                
-                // var idRecipe = $(this).attr('id');
+               $("#current-recipe-list").empty();
+               $("#currentName").empty();
+               $("#current-recipe-list").show();
+               $("#currentName").show();
+               
+               // var idRecipe = $(this).attr('id');
                 var recipeName = $(this).attr('data-name');
                 $("#currentName").append(recipeName);
 
@@ -84,23 +93,22 @@ function displayRecipes() {
                 */
                var recipe = response.results[recipeIndex];
                console.log(recipe.missedIngredients.length);
-                for (var i = 0; i < recipe.missedIngredients.length; i++) {
 
+                for (var i = 0; i < recipe.missedIngredients.length; i++) {
+                
                     var ingredientList = $("#current-recipe-list");
                     ingredientList.append($('<li>').text(recipe.missedIngredients[i].original));
                     console.log(recipe.missedIngredients[i].original);
                     $(".list").append(ingredientList);
                 }
-                
+                           
             });
-
+         
+            
             $(".carousel-inner").append(showImage);
-
+            $(".carousel-indicators").append(carouselIndicators);
 
         }
-
-
-
 
 
     });
