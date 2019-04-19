@@ -4,30 +4,57 @@ var infowindow;
 
 //function initialize() {
 $("#map-btn").on("click", function () {
+    var msg = "Please fix errors in: "
+    var err = false;
     $("#zip-input").removeClass("input-issue");
     $("#state-input").removeClass("input-issue");
     $("#city-input").removeClass("input-issue");
-    $(".google-map-small").addClass("google-map-tall");
-    $(".google-map-small").removeClass("google-map-small");
+    $("#err-msg").remove();
+
 
     var geocoder = new google.maps.Geocoder();
     var address = $("#address-input").val();
+    if (address == "") {
+        //$("#city-input").addClass("input-issue");
+        msg = msg + "address ";
+        err = true;
+    }
+
     var street = $("#street-input").val();
+    if (street == "") {
+        //$("#city-input").addClass("input-issue");
+        msg = msg + "street ";
+        err = true;
+    }
+
     var city = $("#city-input").val();
-    if (!char_input(city)) {
-        $("#city-input").addClass("input-issue");
+    if (!char_input(city)||city =="") {
+        //$("#city-input").addClass("input-issue");
+        msg = msg + "city ";
+        err = true;
     }
 
     var state = $("#state-input").val();
     if (!is_state(state)) {
-        $("#state-input").addClass("input-issue");
+        //$("#state-input").addClass("input-issue");
+        msg = msg + "state ";
+        err = true;
     }
 
     var zip = $("#zip-input").val();
     if (!numeric_input(zip)||zip.length != 5) {
-        $("#zip-input").addClass("input-issue");
+        //$("#zip-input").addClass("input-issue");
+        msg = msg + "zip ";
+        err = true;
     }
 
+    if(err){
+        $(".form-group").append("<h4 class='card-title' id='err-msg'>"+ msg+ "</h4>");
+        return false;
+    }
+    
+    $(".google-map-small").addClass("google-map-tall");
+    $(".google-map-small").removeClass("google-map-small");
     address = address + "+" + street + "+" + city + "+" + state + "+" + zip;
     var queryUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyBoFTlFdN-ElAc6fnn-M8hagD8cU0Lem38"
     //https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway+Mountain+View,+CA&key=YOUR_API_KEY
