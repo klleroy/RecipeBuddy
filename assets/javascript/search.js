@@ -1,10 +1,11 @@
-let favs = [];
-let recipes = [];
+var favs = [];
+var recipes = [];
+var currentId;
 
 $(document).on("click", "#recipe-submit", function (event) {
     event.preventDefault();
     //debugger;
-    $("#carousel-filler").empty();
+    // $("#carousel-filler").empty();
     displayRecipes();
     $("#current-recipe-list").show();
 });
@@ -34,7 +35,7 @@ function displayRecipes() {
         //debugger;
 
         recipes = response.results;
-        move_to_list(recipes[1]);
+        // move_to_list(recipes[1]);
 
         // create a for to get the 10 elements from the data. 
         for (var i = 0; i < response.results.length; i++) {
@@ -46,10 +47,10 @@ function displayRecipes() {
             showImage.attr('data-name', response.results[i].title);
             showImage.attr('data-index', i);
             // Id recipe from API
-
+            // currentId = id;
             // get the image from API
             var imgURL = response.results[i].image;
-
+    
             var image = $("<img>").attr("src", imgURL);
 
             // var showTitle = $("<div class='carousel-caption d-md-block'>");
@@ -78,6 +79,7 @@ function displayRecipes() {
                 $("#currentName").append(recipeName);
 
                 var recipeIndex = $(this).attr('data-index');
+                currentId = $(this).attr('id');
                 /*
                 response = {"results":[ {..receta..}, {...receta..} ] }
                 respose.results = [ {..receta0..}, {...receta1..} ]

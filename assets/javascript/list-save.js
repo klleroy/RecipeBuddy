@@ -339,20 +339,20 @@ function move_to_list(recipe) {
     let i = 0;
     let found = false;
 
-    for(i=0; i<selected_recipe_list.length; i++){
-        if(selected_recipe_list[i].id === recipe.id){
+    for (i = 0; i < selected_recipe_list.length; i++) {
+        if (selected_recipe_list[i].id === recipe.id) {
             found = true;
             i = selected_recipe_list.length;
         }
     }
 
-    if (! found) {
+    if (!found) {
         //list_item = $("<li id='" + recipe.id + "'>"+recipe.title+"</li>");
         list_item = $("<li id='" + recipe.id + "'><button id='shopping-list-trash-btn' data-id = '" + recipe.id + "' class='btn card-title jerky'><i class='far fa-trash-alt jerky' data-id ='" + recipe.id + "'></i></button>" + recipe.title + "</li>");
         $("#saved-shopping-list-").append(list_item);
         parse_item(recipe.missedIngredients, recipe.title);
         selected_recipe_list.push(recipe);
-    }else
+    } else
         alert(recipe.title + " is already on the list");
 }
 
@@ -383,7 +383,7 @@ $(document.body).on("click", ".jerky", function () {
 
     //loop through shoplist and remove ingredients for this recipe 
     for (i = 0; i < shoplist.length; i++) {
-        console.log(shoplist[i].recipe +" - " + recipe)
+        console.log(shoplist[i].recipe + " - " + recipe)
         if (shoplist[i].recipe == recipe) {
             shoplist.splice(i, 1);
         }
@@ -392,7 +392,7 @@ $(document.body).on("click", ".jerky", function () {
 
 $("#shopping-trash-btn").on("click", function () {
     let i = 0;
-    for(i=0; i<selected_recipe_list.length; i++){
+    for (i = 0; i < selected_recipe_list.length; i++) {
         $("#" + selected_recipe_list[i].id).remove();
     }
     selected_recipe_list = "";
@@ -402,6 +402,16 @@ $("#shopping-trash-btn").on("click", function () {
 $("#myClose").on("click", function () {
     modal.style.display = "none";
 })
+
+$("#add-current-recipe-btn").on("click", function () {
+    for (let i = 0; i < recipes.length; i++) {
+        if (recipes[i].id === parseInt(currentId)) {
+            console.log("recipes[i].id" + recipes[i].id + "currentId" + currentId);
+            move_to_list(recipes[i]);
+        }
+    }
+}
+)
 
 $("#build-list").on("click", function () {
     let i = 0;
